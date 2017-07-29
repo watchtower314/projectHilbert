@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="watchtower.escaperoom.SixthClue"
+    android:background="@drawable/hilberthotelnoir"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <!-- no sound icon -->
+        <ImageView
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_gravity="center"
+            android:background="@android:drawable/ic_lock_silent_mode"
+            android:backgroundTint="@color/teal"
+            ></ImageView>
+
+        <!-- cherry -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/c"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/teal"
+                android:maxLength="1"
+                android:textColor="@color/blanco"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text="">
+
+            </EditText>
+            <EditText
+
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/teal"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/blanco"
+                android:textAlignment="center"
+                android:text="H"
+                android:editable="false"
+                >
+            </EditText>
+            <EditText
+
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/teal"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/blanco"
+                android:textAlignment="center"
+                android:text="E"
+                android:editable="false"
+                >
+            </EditText>
+            <EditText
+
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/teal"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/blanco"
+                android:textAlignment="center"
+                android:text="R"
+                android:editable="false"
+                >
+            </EditText>
+            <EditText
+                android:id="@+id/r"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/teal"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/blanco"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+            <EditText
+                android:id="@+id/y"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:background="@color/teal"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/blanco"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+
+        </LinearLayout>
+
+        <!-- sound icon and numbs -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:drawable/ic_lock_silent_mode_off"
+                android:backgroundTint="@color/red"
+                android:layout_gravity="center|end"
+                android:onClick="changeFive"/>
+
+
+            <TextView
+                android:id="@+id/pieNumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1, 2, 3, 4, 5"
+                android:textColor="@color/blanco"
+                android:layout_gravity="center"
+                android:background="@color/yellow"
+                android:textStyle="bold"
+                android:textSize="35dp"
+
+                >
+            </TextView>
+
+        </LinearLayout>
+
+        <!-- pie -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/p"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/yellow"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+            <EditText
+                android:id="@+id/i"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/yellow"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+            <EditText
+                android:id="@+id/e"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/yellow"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+
+        </LinearLayout>
+
+        <!-- check button-->
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/sixthCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/firstcheck"
+            android:background="@color/blanco"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:onClick="checkAns"
+            android:tag="check"
+
+            />
+
+
+
+
+    </LinearLayout>
+
+        <!--
+        <TableRow>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="0,1,2,3,4,5"
+                android:shrinkColumns="0"
+                android:gravity="center">
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/c"
+                        android:width="40dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@color/teal"
+                        android:maxLength="1"
+                        android:textColor="@color/blanco"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:text="">
+
+                </EditText>
+                    <EditText
+                        android:id="@+id/h"
+                        android:width="40dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@color/teal"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blanco"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+                    <EditText
+                        android:id="@+id/e"
+                        android:width="40dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@color/teal"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blanco"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+                    <EditText
+                        android:id="@+id/r"
+                        android:width="40dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@color/teal"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blanco"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+                    <EditText
+                        android:id="@+id/rr"
+                        android:width="40dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@color/teal"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blanco"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+                    <EditText
+                        android:id="@+id/y"
+                        android:width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@color/teal"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blanco"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+                </TableRow>
+
+            </TableLayout>
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_marginTop="40dp">
+
+            <TableLayout
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:stretchColumns="0,1">
+
+                <TableRow>
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/ic_lock_silent_mode_off"
+                        android:backgroundTint="@color/red"
+                        android:layout_gravity="center|end"
+                        android:onClick="changeFive"/>
+
+
+                    <TextView
+                        android:id="@+id/pieNumbers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1, 2, 3, 4, 5"
+                        android:textColor="@color/blanco"
+                        android:layout_gravity="center"
+                        android:background="@color/yellow"
+                        android:textStyle="bold"
+                        android:textSize="35dp"
+
+                        >
+                    </TextView>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="0,1,2"
+            android:shrinkColumns="0"
+            android:gravity="center"
+            >
+
+
+            <TableRow
+
+            android:layout_marginTop="10dp"
+            >
+            <EditText
+                android:id="@+id/p"
+                android:width="1dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/yellow"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+            <EditText
+                android:id="@+id/i"
+                android:width="1dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/yellow"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+            <EditText
+                android:id="@+id/ie"
+                android:width="1dp"
+                android:layout_height="50dp"
+                android:background="@color/yellow"
+                android:maxLength="1"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text=""
+                >
+            </EditText>
+
+
+        </TableRow>
+
+        </TableLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/sixthCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/firstcheck"
+                android:background="@color/blanco"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:onClick="checkAns"
+
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/sixthContinue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/continuar"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/blanco"
+                android:layout_gravity="center"
+                android:background="@color/green"
+                android:onClick="nextClue"
+                android:visibility="invisible"
+                >
+            </Button>
+        </TableRow>
+-->
+
+
+
+
+
+
+</RelativeLayout>

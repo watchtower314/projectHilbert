@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="watchtower.escaperoom.ThirdClue"
+    android:background="@drawable/hilberthotelnoir"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/memawRoom"
+    >
+
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0"
+        android:layout_centerInParent="true"
+        >
+
+        <!-- room -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <EditText
+                    android:id="@+id/room"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:background="@color/blanco"
+                    android:maxLength="3"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:hint="@string/firstEmoji"
+                    android:textColorHint="@android:color/holo_blue_light"
+                    >
+                </EditText>
+
+                <Button
+                    android:id="@+id/checkMark1"
+                    android:layout_height="50dp"
+                    android:layout_width="50dp"
+                    android:background="@drawable/tickcyan"
+                    android:gravity="center"
+                    android:onClick="checkAns"
+                    android:enabled="true"
+                    android:layout_marginLeft="10dp">
+
+                </Button>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <!-- sleep -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/sleep"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:background="@color/blanco"
+                android:maxLength="4"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:hint="@string/secondEmoji"
+                android:textColorHint="@android:color/darker_gray"
+                android:enabled="false"
+                >
+            </EditText>
+
+            <Button
+                android:id="@+id/checkMark2"
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:background="@drawable/tickgray"
+                android:onClick="checkAns"
+                android:layout_marginLeft="10dp">
+
+            </Button>
+
+            </LinearLayout>
+
+        </TableRow>
+
+
+        <!-- memaw -->
+        <TableRow
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/memaw"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:background="@color/blanco"
+                android:maxLength="4"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:hint="@string/thirdEmoji"
+                android:textColorHint="@android:color/darker_gray"
+                android:enabled="false"
+                >
+            </EditText>
+
+            <Button
+                android:id="@+id/checkMark3"
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:background="@drawable/tickgray"
+                android:onClick="checkAns"
+                android:layout_marginLeft="10dp">
+
+            </Button>
+
+            </LinearLayout>
+
+        </TableRow>
+
+
+
+        <!-- next button -->
+        <TableRow>
+
+            <Button
+                android:id="@+id/thirdContinue"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="@string/continuar"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/blanco"
+                android:layout_gravity="center"
+                android:background="@color/green"
+                android:onClick="nextClue"
+                android:visibility="invisible">
+            </Button>
+
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+</RelativeLayout>

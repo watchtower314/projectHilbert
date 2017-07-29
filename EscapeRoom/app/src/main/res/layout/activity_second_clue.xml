@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="watchtower.escaperoom.SecondClue"
+    android:background="@drawable/hilberthotelnoir"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/activity_wall_picture">
+    <!-- TODO: consider doing sth about that fact that the keyboard might cover the editText-->
+    <!--TODO:make sure the picture clue is the size of 50dp*3 + 7dp*2 -->
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0"
+        android:layout_centerInParent="true"
+        >
+
+
+        <!-- clue picture -->
+        <TableRow>
+            <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/tick"
+
+            >
+        </ImageView>
+        </TableRow>
+
+        <!-- tomorrow  -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                >
+
+
+                    <EditText
+                        android:id="@+id/r"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="70dp"
+                        android:background="@color/blanco"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/h"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:background="@color/blanco"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/m"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="70dp"
+                        android:background="@color/blanco"
+                        android:maxLength="1"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:text=""
+                        >
+                    </EditText>
+
+
+            </LinearLayout>
+
+        </TableRow>
+
+
+        <!-- check button -->
+        <TableRow
+            android:layout_marginTop="10dp"
+            >
+
+            <Button
+                android:id="@+id/secondCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/firstcheck"
+                android:background="@color/blanco"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:onClick="checkAns"
+
+                />
+
+        </TableRow>
+
+        <!-- next button -->
+        <TableRow
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/secondContinue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/continuar"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/blanco"
+                android:layout_gravity="center"
+                android:background="@color/green"
+                android:onClick="nextClue"
+                android:visibility="invisible">
+            </Button>
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">EscapeRoom</string>
+    <string name="title_activity_welcome">WelcomeAct</string>
+
+    <string name="startGame">התחל</string>
+    <string name="firstClue"></string>
+    <string name="secondClue"></string>
+    <string name="thirdClue"></string>
+    <string name="fourthClue"></string>
+    <string name="fifthClue"></string>
+    <string name="sixthClue"></string>
+    <string name="seventhClue"></string>
+    <string name="eightsClue"></string>
+    <string name="ninthClue"></string>
+    <string name="tenthClue"></string>
+    <string name="eleventhClue"></string>
+    <string name="twelfthClue"></string>
+    <string name="submit">sumbit</string>
+    <string name="error">ססמא שגוייה, נסו שוב</string>
+    <string name="accessDenied">עלייך לפתור את הרמזים הקודמים בשביל לפתוח את הרמז הזה</string>
+    <string name="firstcheck">בדיקה</string>
+    <string name="firstWrong">טעות! נסו שוב</string>
+    <string name="continuar">המשך</string>
+    <string name="correct">נכון!</string>
+    <string name="firstEmoji">"חידה #1"</string>
+    <string name="secondEmoji">"חידה #2"</string>
+    <string name="thirdEmoji">"חידה #3"</string>
+    <string name="pressForClue">לקבלת הרמז הבא</string>
+    <string name="callMeMaybe">Call me, maybe?</string>
+    <string name="getAClue">בקשו רמז בקבוצה</string>
+    <string name="bookN">שם הספר</string>
+    <string name="wait">Processing...</string>
+
+    <string name="url">https://chat.whatsapp.com/CpmlLGBke45CZpuUKlxpTF</string>
+
+
+</resources>
