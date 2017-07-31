@@ -8,18 +8,17 @@
     tools:context="watchtower.escaperoom.WelcomeAct"
     android:background="@drawable/hilberthotel4">
 
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:backgroundTint="@android:color/white"
-        android:text="@string/startGame"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="299dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="159dp"
-        android:onClick="connectWhatsapp"/>
+         <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/startGame"
+            android:textSize="20dp"
+             android:onClick="connectWhatsapp"
+             android:layout_alignParentBottom="true"
+             android:layout_centerHorizontal="true"
+             android:layout_marginBottom="140dp" />
+
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 
 public class FirstClue extends AppCompatActivity {
     EditText red1, blue1, red2, blue2;
+    public final String ANS1 =  "104950", ANS2 = "015049", ANS3 = "495010", ANS4 = "504901";
     Button cont;
     public final int clue = 1;
 
@@ -38,6 +40,7 @@ public class FirstClue extends AppCompatActivity {
 
 
     public void hideKeyboard(View view) {
+        Log.d("TKT1","hiding keyboard");
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
@@ -45,23 +48,19 @@ public class FirstClue extends AppCompatActivity {
 
     public void checkAns(View v) {
 
-        String ans1 = "104950",
-                ans2 = "015049",
-                ans3 = "495010",
-                ans4 = "504901";
+        Log.d("TKT1","checkAns was pressed");
 
         String answer = red1.getText().toString() + blue1.getText().toString() + red2.getText().toString() + blue2.getText().toString();
 
-        if (answer.equals(ans1) || answer.equals(ans2) || answer.equals(ans3) || answer.equals(ans4)) {
-            //TODO: popup of correctness
-            System.out.println("strings match");
+        if (answer.equals(ANS1) || answer.equals(ANS2) || answer.equals(ANS3) || answer.equals(ANS4)) {
+            Log.d("TKT1","ANSWER is correct");
             Game.updateSharedPref(ClueAct.clueButtons[clue],clue+1);
             Game.firstClueEditTexts(red1.getText().toString(), blue1.getText().toString(), red2.getText().toString(), blue2.getText().toString());
-
             disableEditText();
             cont.setVisibility(View.VISIBLE);
 
         } else {
+            Log.d("TKT1","ANSWER is incorrect");
             Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.activity_marbles));
             red1.setText("");
             red2.setText("");
@@ -74,6 +73,7 @@ public class FirstClue extends AppCompatActivity {
 
     public void initBoxes()
     {
+        Log.d("TKT1","initBoxes was called");
         red1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -111,6 +111,7 @@ public class FirstClue extends AppCompatActivity {
 
     public void disableEditText()
     {
+        Log.d("TKT1","disableEditText was called");
         red1.setText(Game.gamePrefs.getString("red1",""));
         red2.setText(Game.gamePrefs.getString("red2",""));
         blue1.setText(Game.gamePrefs.getString("blue1",""));
@@ -128,6 +129,7 @@ public class FirstClue extends AppCompatActivity {
 
     public void nextClue(View v)
     {
+        Log.d("TKT1","nextClue was pressed");
         Intent intent = new Intent(this, ClueAct.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -3,7 +3,9 @@ package watchtower.escaperoom;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -46,12 +48,13 @@ public class ThirdClue extends AppCompatActivity {
 
     public void disableEditText()
     {
+        Log.d("TKT3","disableEditText was called");
         room.setText(r);
         sleep.setText(s);
         memaw.setText(m);
-        room.setTextColor(getResources().getColor(R.color.cyan));
-        sleep.setTextColor(getResources().getColor(R.color.cyan));
-        memaw.setTextColor(getResources().getColor(R.color.cyan));
+        room.setTextColor(ContextCompat.getColor(this, R.color.cyan));//getResources().getColor(R.color.cyan));
+        sleep.setTextColor(ContextCompat.getColor(this, R.color.cyan));
+        memaw.setTextColor(ContextCompat.getColor(this, R.color.cyan));
         room.setEnabled(false);
         sleep.setEnabled(false);
         memaw.setEnabled(false);
@@ -66,15 +69,18 @@ public class ThirdClue extends AppCompatActivity {
 
     public void checkAns(View v)
     {
+        Log.d("TKT3","checkAns was pressed");
         int id = v.getId();
 
         switch(id)
         {
             case R.id.checkMark1:
             {
+                Log.d("TKT3","checkMark1 was pressed");
                 ans = room.getText().toString();
                 if(ans.equals(r))
                 {
+                    Log.d("TKT3","ans = room");
                     room.setEnabled(false);
                     c1.setBackgroundResource(R.drawable.tickc);
                     c1.setEnabled(false);
@@ -85,16 +91,18 @@ public class ThirdClue extends AppCompatActivity {
 
                 }
                 else {
-                    System.out.println("in here!!!");
+                    Log.d("TKT3","ans != room");
                     err(room);
                 }
                 break;
             }
             case R.id.checkMark2:
             {
+                Log.d("TKT3","checkMark2 was pressed");
                 ans = sleep.getText().toString();
                 if(ans.equals(s))
                 {
+                    Log.d("TKT3","ans = sleep");
                     sleep.setEnabled(false);
                     c2.setBackgroundResource(R.drawable.tickc);
                     c2.setEnabled(false);
@@ -105,7 +113,7 @@ public class ThirdClue extends AppCompatActivity {
 
                 }
                 else {
-
+                    Log.d("TKT3","ans != sleep");
                     err(sleep);
                 }
 
@@ -113,9 +121,11 @@ public class ThirdClue extends AppCompatActivity {
             }
             case R.id.checkMark3:
             {
+                Log.d("TKT3","checkMark3 was pressed");
                 ans = memaw.getText().toString();
                 if(ans.equals(m))
                 {
+                    Log.d("TKT3","ans = memaw");
                     memaw.setEnabled(false);
                     c3.setBackgroundResource(R.drawable.tickc);
                     c3.setEnabled(false);
@@ -123,8 +133,10 @@ public class ThirdClue extends AppCompatActivity {
                     Game.updateSharedPref(ClueAct.clueButtons[clue],clue+1);
 
                 }
-                else
+                else {
+                    Log.d("TKT3","ans != sleep");
                     err(memaw);
+                }
                 break;
             }
 
@@ -137,11 +149,13 @@ public class ThirdClue extends AppCompatActivity {
 
     public void err (EditText t)
     {
+        Log.d("TKT3","err was called");
         Game.getSnackbar(R.string.firstWrong, (RelativeLayout)findViewById(R.id.memawRoom));
         t.setText("");
     }
 
     public void hideKeyboard(View view) {
+        Log.d("TKT3","hiding keyboard");
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
@@ -149,6 +163,7 @@ public class ThirdClue extends AppCompatActivity {
 
     public void initBoxes()
     {
+        Log.d("TKT3","intiBoxes was called");
         room.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -179,6 +194,7 @@ public class ThirdClue extends AppCompatActivity {
 
     public void nextClue(View v)
     {
+        Log.d("TKT3","nextClue was pressed");
         Intent intent = new Intent(this, ClueAct.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

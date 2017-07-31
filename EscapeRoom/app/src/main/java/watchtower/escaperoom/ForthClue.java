@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -28,8 +29,6 @@ public class ForthClue extends AppCompatActivity {
 
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
         int clues = Game.gamePrefs.getInt("currentClue",0);
-        System.out.println("this is clues: " +clues);
-        System.out.println("got here now");
 
         if(clues > clue)
             disableEditText();
@@ -42,6 +41,7 @@ public class ForthClue extends AppCompatActivity {
 
     public void initEditText()
     {
+        Log.d("TKT4","initEditText was called");
         numbers[0] = (EditText)findViewById(R.id.one);
         numbers[1] = (EditText)findViewById(R.id.two);
         numbers[2] = (EditText)findViewById(R.id.three);
@@ -55,6 +55,7 @@ public class ForthClue extends AppCompatActivity {
 
     }
     public void hideKeyboard(View view) {
+        Log.d("TKT4","hiding keyboard");
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
@@ -63,7 +64,7 @@ public class ForthClue extends AppCompatActivity {
 
     public void initBoxes()
     {
-
+        Log.d("TKT4","initBoxes was called");
         for(int i = 0; i < numbers.length; i++)
         {
             numbers[i].setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -81,12 +82,9 @@ public class ForthClue extends AppCompatActivity {
 
     public void disableEditText()
     {
-        System.out.println("got here now");
-
+        Log.d("TKT4","disableEditText was pressed");
         for(int i=0; i<numbers.length; i++)
         {
-
-
             numbers[i].setText(phoneNumber.charAt(i)+"");
             numbers[i].setEnabled(false);
         }
@@ -100,21 +98,21 @@ public class ForthClue extends AppCompatActivity {
 
     public void checkInput(View v)
     {
+        Log.d("TKT4","checkInput was pressed");
         for(int i=0; i<numbers.length; i++)
         {
             ans+=numbers[i].getText().toString();
         }
-        System.out.println("phoneNum: "+phoneNumber);
-        System.out.println("ans: "+ans);
 
         if(ans.equals(phoneNumber))
         {
-
+            Log.d("TKT4","ans = phoneNumber");
             disableEditText();
             Game.updateSharedPref(ClueAct.clueButtons[clue], clue+1);
         }
         else
         {
+            Log.d("TKT4","ans != phoneNumber");
             Game.getSnackbar(R.string.firstWrong, (RelativeLayout)findViewById(R.id.callMe));
             for(int i = 0; i<numbers.length; i++)
             {
@@ -125,6 +123,7 @@ public class ForthClue extends AppCompatActivity {
 
     public void nextClue(View v)
     {
+        Log.d("TKT4","nextClue was pressed");
         Intent intent = new Intent(this, ClueAct.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

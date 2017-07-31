@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">EscapeRoom</string>
+    <string name="app_name">המלון של הילברט</string>
     <string name="title_activity_welcome">WelcomeAct</string>
 
     <string name="startGame">התחל</string>
-    <string name="firstClue"></string>
-    <string name="secondClue"></string>
-    <string name="thirdClue"></string>
-    <string name="fourthClue"></string>
-    <string name="fifthClue"></string>
-    <string name="sixthClue"></string>
-    <string name="seventhClue"></string>
-    <string name="eightsClue"></string>
-    <string name="ninthClue"></string>
-    <string name="tenthClue"></string>
-    <string name="eleventhClue"></string>
-    <string name="twelfthClue"></string>
+    <string name="firstClue">רמז #1</string>
+    <string name="secondClue">רמז #2</string>
+    <string name="thirdClue">רמז #3</string>
+    <string name="fourthClue">רמז #4</string>
+    <string name="fifthClue">רמז #5</string>
+    <string name="sixthClue">רמז #6</string>
+    <string name="seventhClue">רמז #7</string>
+    <string name="eightsClue">רמז #8</string>
+    <string name="ninthClue">רמז #9</string>
+    <string name="tenthClue">רמז #10</string>
+    <string name="eleventhClue">רמז #11</string>
+    <string name="twelfthClue">רמז#12</string>
     <string name="submit">sumbit</string>
     <string name="error">ססמא שגוייה, נסו שוב</string>
     <string name="accessDenied">עלייך לפתור את הרמזים הקודמים בשביל לפתוח את הרמז הזה</string>

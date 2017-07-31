@@ -10,6 +10,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- vibration service-->
+        <service android:name=".VibrateService"/>
+
+        <!-- Welcome-->
         <activity android:name=".WelcomeAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -20,70 +25,106 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Clue Act-->
         <activity android:name=".ClueAct"
             android:launchMode="singleTask"
             android:parentActivityName=".WelcomeAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
+
+        <!-- First clue-->
         <activity android:name=".FirstClue"
             android:launchMode="singleTask"
+            android:label="@string/firstClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
+
+        <!-- Second clue-->
         <activity android:name=".SecondClue"
             android:launchMode="singleTask"
+            android:label="@string/secondClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
+
+        <!-- Third clue-->
         <activity android:name=".ThirdClue"
             android:parentActivityName=".ClueAct"
+            android:label="@string/thirdClue"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Fourth clue-->
         <activity android:name=".ForthClue"
             android:launchMode="singleTask"
+            android:label="@string/fourthClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Fifth clue-->
         <activity android:name=".FifthClue"
             android:launchMode="singleTask"
+            android:label="@string/fifthClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Sixth clue-->
         <activity android:name=".SixthClue"
             android:launchMode="singleTask"
+            android:label="@string/sixthClue"
             android:parentActivityName=".ClueAct"
-
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
-        <service android:name=".VibrateService"/>
+
+        <!-- Seventh clue-->
         <activity android:name=".SeventhClue"
             android:launchMode="singleTask"
+            android:label="@string/seventhClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Eighth clue-->
         <activity android:name=".EighthClue"
             android:launchMode="singleTask"
+            android:label="@string/eightsClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Ninth clue-->
         <activity android:name=".NinthClue"
             android:launchMode="singleTask"
+            android:label="@string/ninthClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Tenth clue-->
         <activity android:name=".TenthClue"
             android:launchMode="singleTask"
+            android:label="@string/tenthClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Eleventh clue-->
         <activity android:name=".EleventhClue"
             android:launchMode="singleTask"
+            android:label="@string/eleventhClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+
+        <!-- Twelfth clue-->
         <activity android:name=".TwelfthClue"
             android:launchMode="singleTask"
+            android:label="@string/twelfthClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"></activity>

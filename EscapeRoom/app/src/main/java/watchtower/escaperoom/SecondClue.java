@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class SecondClue extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_clue);
+
         m = (EditText)findViewById(R.id.m);
         h = (EditText)findViewById(R.id.h);
         r = (EditText)findViewById(R.id.r);
@@ -38,19 +40,20 @@ public class SecondClue extends AppCompatActivity {
 
     public void checkAns(View v)
     {
+        Log.d("TKT2","checkAns was pressed");
         String tomorrow = "מחר";
         String ans = m.getText().toString()+ h.getText().toString() + r.getText().toString();
         System.out.println("ans: "+ans);
         if(tomorrow.equals(ans))
         {
-            System.out.println("truee dat");
-
+            Log.d("TKT2", "ans = tomorrow");
             check.setText(R.string.correct);
             Game.updateSharedPref(ClueAct.clueButtons[clue], clue+1);
             disableView();
         }
         else
         {
+            Log.d("TKT2","ans != tomorrow");
             Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.activity_wall_picture));
             m.setText("");
             h.setText("");
@@ -61,12 +64,14 @@ public class SecondClue extends AppCompatActivity {
     }
 
     public void hideKeyboard(View view) {
+        Log.d("TKT2","hiding keyboard");
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public void disableView()
     {
+        Log.d("TKT2","disableView was called");
         check.setEnabled(false);
         continuar.setVisibility(View.VISIBLE);
         m.setText("מ");
@@ -80,9 +85,7 @@ public class SecondClue extends AppCompatActivity {
 
     public void nextClue(View v)
     {
-        //Intent intent = new Intent(this, ThirdClue.class);
-        //startActivity(intent);
-        System.out.println("nextPressed");
+        Log.d("TKT2","nextClue pressed");
         Intent intent = new Intent(this, ClueAct.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -93,6 +96,7 @@ public class SecondClue extends AppCompatActivity {
 
     public void initBoxes()
     {
+        Log.d("TKT2","initBoxes was called");
         m.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

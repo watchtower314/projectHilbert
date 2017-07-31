@@ -6,18 +6,21 @@
     android:layout_height="match_parent"
     tools:context="watchtower.escaperoom.SixthClue"
     android:background="@drawable/hilberthotelnoir"
+    android:orientation="vertical"
     android:clickable="true"
     android:focusableInTouchMode="true"
+    android:id="@+id/bringMePie"
+
     >
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <!-- no sound icon -->
+        <!-- no sound icon
         <ImageView
             android:layout_height="50dp"
             android:layout_width="50dp"
@@ -25,8 +28,9 @@
             android:background="@android:drawable/ic_lock_silent_mode"
             android:backgroundTint="@color/teal"
             ></ImageView>
+        -->
 
-        <!-- cherry -->
+        <!-- cherry
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,29 +123,46 @@
             </EditText>
 
         </LinearLayout>
+        -->
 
-        <!-- sound icon and numbs -->
+
+        <!-- sound icon and nums -->
         <LinearLayout
+            android:id="@+id/iconNumsLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp">
+            android:layout_gravity="center_horizontal|center_vertical">
 
             <ImageButton
+                android:id="@+id/soundButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@android:drawable/ic_lock_silent_mode_off"
                 android:backgroundTint="@color/red"
                 android:layout_gravity="center|end"
-                android:onClick="changeFive"/>
+                android:onClick="changeFive" >
 
-
+            </ImageButton>
             <TextView
                 android:id="@+id/pieNumbers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1, 2, 3, 4, 5"
+                android:text="1, 2, 3, 4, "
+                android:textColor="@color/blanco"
+                android:layout_gravity="center"
+                android:background="@color/yellow"
+                android:textStyle="bold"
+                android:textSize="35dp"
+
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
                 android:textColor="@color/blanco"
                 android:layout_gravity="center"
                 android:background="@color/yellow"
@@ -158,7 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_marginTop="10dp">
 
             <EditText
@@ -208,20 +229,18 @@
             android:id="@+id/sixthCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/firstcheck"
             android:background="@color/blanco"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:onClick="checkAns"
             android:tag="check"
 
             />
 
-
-
-
-    </LinearLayout>
+     </LinearLayout>
 
         <!--
         <TableRow>
