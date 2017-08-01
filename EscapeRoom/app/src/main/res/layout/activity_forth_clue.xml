@@ -9,34 +9,32 @@
     android:id="@+id/callMe"
     android:clickable="true"
     android:focusableInTouchMode="true"
+    android:layoutDirection="ltr"
     >
 
     <!--  TODO: consider change these setting to tableLaout-->
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="1"
-        android:rowCount="3"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
         <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
             android:columnCount="5"
-            android:rowCount="2">
-
+            android:rowCount="2"
+            android:layout_marginBottom="5dp">
 
             <EditText
                 android:id="@+id/one"
                 android:layout_column="0"
                 android:layout_row="0"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -47,12 +45,11 @@
             </EditText>
             <EditText
                 android:id="@+id/two"
-                android:layout_column="1"
-                android:layout_row="0"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -63,12 +60,11 @@
             </EditText>
             <EditText
                 android:id="@+id/three"
-                android:layout_column="2"
-                android:layout_row="0"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -79,12 +75,11 @@
             </EditText>
             <EditText
                 android:id="@+id/four"
-                android:layout_column="3"
-                android:layout_row="0"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -95,12 +90,11 @@
             </EditText>
             <EditText
                 android:id="@+id/five"
-                android:layout_column="4"
-                android:layout_row="0"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -111,12 +105,10 @@
             </EditText>
             <EditText
                 android:id="@+id/six"
-                android:layout_column="0"
-                android:layout_row="1"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -127,12 +119,11 @@
             </EditText>
             <EditText
                 android:id="@+id/seven"
-                android:layout_column="1"
-                android:layout_row="1"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -143,12 +134,11 @@
             </EditText>
             <EditText
                 android:id="@+id/eight"
-                android:layout_column="2"
-                android:layout_row="1"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -159,12 +149,11 @@
             </EditText>
             <EditText
                 android:id="@+id/nine"
-                android:layout_column="3"
-                android:layout_row="1"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -175,12 +164,11 @@
             </EditText>
             <EditText
                 android:id="@+id/ten"
-                android:layout_column="4"
-                android:layout_row="1"
                 android:width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/blanco"
                 android:maxLength="1"
                 android:textSize="20dp"
@@ -194,24 +182,23 @@
 
         <Button
             android:id="@+id/pressForClue"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:layout_width="170dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/pressForClue"
             android:background="@color/blanco"
             android:textSize="15dp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:onClick="checkInput"
             android:layout_gravity="center">
         </Button>
 
         <Button
             android:id="@+id/fourthContinue"
-            android:layout_column="0"
-            android:layout_row="2"
-            android:layout_width="170dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="@string/continuar"
             android:textStyle="bold"
             android:textSize="20dp"
@@ -223,7 +210,7 @@
         </Button>
 
 
-    </GridLayout>
+    </LinearLayout>
 
 
 </RelativeLayout>

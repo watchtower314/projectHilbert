@@ -8,7 +8,8 @@
     android:background="@drawable/hilberthotelnoir"
     android:id="@+id/findMyPhone"
     android:clickable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:layoutDirection="ltr">
 
 
     <LinearLayout
@@ -45,7 +46,8 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/tickcyan"
                 android:onClick="checkAns"
-                android:enabled="true">
+                android:enabled="true"
+                android:tag="bluetick">
 
             </Button>
 

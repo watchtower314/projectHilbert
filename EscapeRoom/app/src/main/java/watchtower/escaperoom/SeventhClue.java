@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -13,7 +14,6 @@ import android.widget.TextView;
 public class SeventhClue extends AppCompatActivity {
 
     static Button check;
-    TextView process;
     public final int clue = 7;
 
     @Override
@@ -22,11 +22,9 @@ public class SeventhClue extends AppCompatActivity {
         setContentView(R.layout.activity_seventh_clue);
 
         check = (Button) findViewById(R.id.sixthContinue);
-        process = (TextView) findViewById(R.id.processing);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS, 0);
         int clues = Game.gamePrefs.getInt("currentClue", 0);
-        System.out.println("this is clues: " + clues);
-        System.out.println("got here now");
+        Log.d("TKT7", "onCreate");
 
         if (clues > clue) {
             check.setBackgroundResource(R.drawable.arrowy);
@@ -36,25 +34,27 @@ public class SeventhClue extends AppCompatActivity {
 
     public void nextStep(View v)
     {
-        long sec = 3000;
+        Log.d("TKT7", "nextStep was pressed");
         String tag = v.getTag().toString();
-        System.out.println("tag: "+tag);
         if(tag.equals("bluetick"))
         {
+            Log.d("TKT7", "tag = bluetick");
             check.setBackgroundResource(R.drawable.tickc);
             Snackbarring(R.string.wait, (RelativeLayout)findViewById(R.id.circles));
             check.setTag("next");
+            Game.updateSharedPref(ClueAct.clueButtons[clue], clue+1);
         }
         else
         {
-            Game.updateSharedPref(ClueAct.clueButtons[clue], clue+1);
-            nextClue(v);
+            Log.d("TKT7", "tag = next");
+            nextClue();
         }
 
     }
 
     public static void Snackbarring(int message, RelativeLayout activity)
     {
+        Log.d("TKT7", "snackbarring was called");
         Snackbar error = Snackbar.make(activity, message, Snackbar.LENGTH_LONG);
         View errorView = error.getView();
         errorView.setBackgroundColor(Color.DKGRAY);
@@ -83,8 +83,9 @@ public class SeventhClue extends AppCompatActivity {
 
 
 
-    public void nextClue(View v)
+    public void nextClue()
     {
+        Log.d("TKT7", "nextClue was called");
         Intent intent = new Intent(this, ClueAct.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

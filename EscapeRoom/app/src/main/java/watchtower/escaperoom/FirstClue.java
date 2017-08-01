@@ -3,6 +3,7 @@ package watchtower.escaperoom;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.RelativeLayout;
 public class FirstClue extends AppCompatActivity {
     EditText red1, blue1, red2, blue2;
     public final String ANS1 =  "104950", ANS2 = "015049", ANS3 = "495010", ANS4 = "504901";
-    Button cont;
+    Button checkButton1;
     public final int clue = 1;
 
     @Override
@@ -25,11 +26,11 @@ public class FirstClue extends AppCompatActivity {
         blue1 = (EditText)findViewById(R.id.blueBox1);
         red2 = (EditText)findViewById(R.id.redBox2);
         blue2 = (EditText)findViewById(R.id.blueBox2);
-        cont = (Button)findViewById(R.id.firstContinue);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
-
+        checkButton1 = (Button)findViewById(R.id.firstCheck);
         int clues = Game.gamePrefs.getInt("currentClue",0);
         System.out.println("this is clues: " +clues);
+        Log.d("TKT1", "onCreate clue1");
         if(clues > clue)
             disableEditText();
         else
@@ -49,26 +50,33 @@ public class FirstClue extends AppCompatActivity {
     public void checkAns(View v) {
 
         Log.d("TKT1","checkAns was pressed");
+        if(checkButton1.getTag().equals(Game.CHECK_TAG))
+        {
+            String answer = red1.getText().toString() + blue1.getText().toString() + red2.getText().toString() + blue2.getText().toString();
+            if (answer.equals(ANS1) || answer.equals(ANS2) || answer.equals(ANS3) || answer.equals(ANS4))
+            {
+                Log.d("TKT1", "ANSWER is correct");
+                Game.updateSharedPref(ClueAct.clueButtons[clue], clue + 1);
+                Game.firstClueEditTexts(red1.getText().toString(), blue1.getText().toString(), red2.getText().toString(), blue2.getText().toString());
+                disableEditText();
+                //disableEditText();
+            }
+            else
+                {
+                    Log.d("TKT1", "ANSWER is incorrect");
+                    Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.activity_marbles));
+                    red1.setText("");
+                    red2.setText("");
+                    blue1.setText("");
+                    blue2.setText("");
+                }
 
-        String answer = red1.getText().toString() + blue1.getText().toString() + red2.getText().toString() + blue2.getText().toString();
-
-        if (answer.equals(ANS1) || answer.equals(ANS2) || answer.equals(ANS3) || answer.equals(ANS4)) {
-            Log.d("TKT1","ANSWER is correct");
-            Game.updateSharedPref(ClueAct.clueButtons[clue],clue+1);
-            Game.firstClueEditTexts(red1.getText().toString(), blue1.getText().toString(), red2.getText().toString(), blue2.getText().toString());
-            disableEditText();
-            cont.setVisibility(View.VISIBLE);
-
-        } else {
-            Log.d("TKT1","ANSWER is incorrect");
-            Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.activity_marbles));
-            red1.setText("");
-            red2.setText("");
-            blue1.setText("");
-            blue2.setText("");
-        }
-
-
+            }
+            else
+                {
+                Log.d("TKT1", "tag = next");
+                nextClue();
+            }
     }
 
     public void initBoxes()
@@ -112,6 +120,10 @@ public class FirstClue extends AppCompatActivity {
     public void disableEditText()
     {
         Log.d("TKT1","disableEditText was called");
+        checkButton1.setTag(Game.NEXT_TAG);
+        checkButton1.setTextColor(ContextCompat.getColor(this, R.color.blanco));
+        checkButton1.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
+        checkButton1.setText(R.string.continuar);
         red1.setText(Game.gamePrefs.getString("red1",""));
         red2.setText(Game.gamePrefs.getString("red2",""));
         blue1.setText(Game.gamePrefs.getString("blue1",""));
@@ -120,14 +132,11 @@ public class FirstClue extends AppCompatActivity {
         red2.setEnabled(false);
         blue1.setEnabled(false);
         blue2.setEnabled(false);
-        Button check = (Button)findViewById(R.id.firstCheck);
-        check.setText(R.string.correct);
-        check.setEnabled(false);
-        cont.setVisibility(View.VISIBLE);
 
     }
 
-    public void nextClue(View v)
+
+    public void nextClue()
     {
         Log.d("TKT1","nextClue was pressed");
         Intent intent = new Intent(this, ClueAct.class);

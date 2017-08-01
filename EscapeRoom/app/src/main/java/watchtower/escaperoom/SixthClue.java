@@ -26,7 +26,7 @@ public class SixthClue extends AppCompatActivity {
     TextView pieNumbers, five;
     EditText pText, iText, eText;
     ImageButton sound;
-    Button checkButton;
+    Button checkButton6;
     public final int clue = 6;
     public final String pie = "Pie";
 
@@ -41,12 +41,10 @@ public class SixthClue extends AppCompatActivity {
         iText = (EditText)findViewById(R.id.i);
         eText = (EditText)findViewById(R.id.e);
         sound = (ImageButton)findViewById(R.id.soundButton);
-        checkButton = (Button)findViewById(R.id.sixthCheck);
+        checkButton6 = (Button)findViewById(R.id.sixthCheck);
 
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
         int clues = Game.gamePrefs.getInt("currentClue",0);
-        System.out.println("this is clues: " +clues);
-        System.out.println("got here now");
 
         if(clues > clue)
             disableEditText();
@@ -124,14 +122,15 @@ public class SixthClue extends AppCompatActivity {
     {
         Log.d("TKT6", "check pressed");
 
-        if(checkButton.getTag().equals(Game.CHECK_TAG))
+        if(checkButton6.getTag().equals(Game.CHECK_TAG))
         {
             Log.d("TKT6","tag = check");
             String ans = pText.getText().toString() + iText.getText().toString() + eText.getText().toString();
-            System.out.println("ans: "+ans);
-            if (ans.equalsIgnoreCase(pie)) {
+            if (ans.equalsIgnoreCase(pie))
+            {
+                Log.d("TKT6","ans = pie");
                 Game.updateSharedPref(ClueAct.clueButtons[clue], clue+1);
-                setNext();
+                disableEditText();
             }
             else {
                 Log.d("TKT6","ans != pie");
@@ -144,7 +143,6 @@ public class SixthClue extends AppCompatActivity {
         else
         {
             Log.d("TKT6","tag = next");
-            disableEditText();
             nextClue();
         }
 
@@ -154,6 +152,10 @@ public class SixthClue extends AppCompatActivity {
     public void disableEditText()
     {
         Log.d("TKT6","disableEditText was called");
+        checkButton6.setTag(Game.NEXT_TAG);
+        checkButton6.setTextColor(ContextCompat.getColor(this, R.color.blanco));
+        checkButton6.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
+        checkButton6.setText(R.string.continuar);
         sound.setEnabled(false);
         five.setTextColor(ContextCompat.getColor(this, R.color.red));
         pText.setText(String.valueOf(pie.charAt(0)));
@@ -163,17 +165,6 @@ public class SixthClue extends AppCompatActivity {
         iText.setEnabled(false);
         eText.setEnabled(false);
         }
-
-    public void setNext()
-    {
-        Log.d("TKT6","setNext was called");
-        checkButton.setTag(Game.NEXT_TAG);
-        checkButton.setTextColor(ContextCompat.getColor(this, R.color.blanco));
-        checkButton.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
-        checkButton.setText(R.string.continuar);
-        disableEditText();
-
-    }
 
     @Override
     public void onBackPressed() {

@@ -3,6 +3,7 @@ package watchtower.escaperoom;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -22,7 +23,14 @@ public class ClueAct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        if(savedInstanceState !=null)
+            Log.d("TKT_clue", "not null");
+        else
+        {
+            Log.d("TKT_clue", "null");
+            super.onCreate(savedInstanceState);
+            Log.d("TKT_clue", "clue was onCreated");
+        }
         setContentView(R.layout.activity_clue);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
         initButtons();
