@@ -30,8 +30,15 @@
     <string name="getAClue">בקשו רמז בקבוצה</string>
     <string name="bookN">שם הספר</string>
     <string name="wait">Processing...</string>
+    <string name="emergencia">Calling 911...</string>
+    <string name="jk">Just kidding, focus on the game!</string>
+    <string name="message"> \nמאחורי כל אייקון נמצא רמז.
+\nאבל רק מאחורי אייקון
+    אחד נמצא הרמז הנכון...</string>
+    <string name="denied">Access denied</string>
 
     <string name="url">https://chat.whatsapp.com/CpmlLGBke45CZpuUKlxpTF</string>
+    <string name="wrongPassword">הקוד שגוי, נסו שוב אחר כך</string>
 
 
 </resources>

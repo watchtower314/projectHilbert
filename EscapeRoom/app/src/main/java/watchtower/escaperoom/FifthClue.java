@@ -33,8 +33,11 @@ public class FifthClue extends AppCompatActivity {
         System.out.println("this is clues: " +clues);
         System.out.println("got here now");
 
-        if(clues > clue)
+        if(clues > clue) {
+            checkButton5.setTag("arrowy");
             disableEditText();
+
+        }
         else
             initBoxes();
     }
@@ -54,6 +57,7 @@ public class FifthClue extends AppCompatActivity {
             String ans = book.getText().toString();
             if (ans.equalsIgnoreCase(BOOK))
             {
+                //TODO: check what happens when pressing check
                 Log.d("TKT5", "ans = book");
                 checkButton5.setBackgroundResource(R.drawable.tickc);
                 Game.updateSharedPref(ClueAct.clueButtons[clue], clue + 1);
@@ -106,6 +110,7 @@ public class FifthClue extends AppCompatActivity {
         Log.d("TKT5","disableEditText was called");
         book.setText(BOOK);
         book.setEnabled(false);
+        checkButton5.setBackgroundResource(R.drawable.arrowy);
     }
 
 

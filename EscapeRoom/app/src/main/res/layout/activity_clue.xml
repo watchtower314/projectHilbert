@@ -133,7 +133,8 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/second"
@@ -145,7 +146,8 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/third"
@@ -157,7 +159,8 @@
                 android:background="@android:drawable/ic_lock_idle_lock"
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/fourth"
@@ -170,7 +173,8 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/fifth"
@@ -183,7 +187,9 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready">
+            </Button>
 
             <Button
                 android:id="@+id/sixth"
@@ -195,7 +201,8 @@
                 android:background="@android:drawable/ic_lock_idle_lock"
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/seventh"
@@ -208,7 +215,8 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/eighth"
@@ -221,7 +229,8 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/ninth"
@@ -233,7 +242,8 @@
                 android:background="@android:drawable/ic_lock_idle_lock"
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/tenth"
@@ -246,7 +256,8 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/eleventh"
@@ -259,7 +270,8 @@
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
             <Button
                 android:id="@+id/twelfth"
@@ -271,7 +283,8 @@
                 android:background="@android:drawable/ic_lock_idle_lock"
                 android:enabled="false"
                 android:layout_marginBottom="20dp"
-                android:onClick="goToClue"></Button>
+                android:onClick="goToClue"
+                android:tag="ready"></Button>
 
 
         </GridLayout>

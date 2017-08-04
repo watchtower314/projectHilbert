@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="watchtower.escaperoom">
 
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -11,11 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- vibration service-->
-        <service android:name=".VibrateService"/>
+        <!-- vibration service -->
+        <service android:name=".VibrateService" />
 
-        <!-- Welcome-->
-        <activity android:name=".WelcomeAct"
+        <!-- Welcome -->
+        <activity
+            android:name=".WelcomeAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
@@ -26,110 +27,300 @@
             </intent-filter>
         </activity>
 
-        <!-- Clue Act-->
-        <activity android:name=".ClueAct"
+        <!-- Clue Act -->
+        <activity
+            android:name=".ClueAct"
             android:launchMode="singleTask"
             android:parentActivityName=".WelcomeAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
-        <!-- First clue-->
-        <activity android:name=".FirstClue"
-            android:launchMode="singleTask"
+        <!-- First clue -->
+        <activity
+            android:name=".FirstClue"
             android:label="@string/firstClue"
-            android:parentActivityName=".ClueAct"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-
-        <!-- Second clue-->
-        <activity android:name=".SecondClue"
             android:launchMode="singleTask"
-            android:label="@string/secondClue"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
-        <!-- Third clue-->
-        <activity android:name=".ThirdClue"
+        <!-- Second clue -->
+        <activity
+            android:name=".SecondClue"
+            android:label="@string/secondClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Third clue -->
+        <activity
+            android:name=".ThirdClue"
             android:label="@string/thirdClue"
             android:launchMode="singleTask"
+            android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Fourth clue-->
-        <activity android:name=".ForthClue"
-            android:launchMode="singleTask"
+        <!-- Fourth clue -->
+        <activity
+            android:name=".ForthClue"
             android:label="@string/fourthClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Fifth clue-->
-        <activity android:name=".FifthClue"
-            android:launchMode="singleTask"
+        <!-- Fifth clue -->
+        <activity
+            android:name=".FifthClue"
             android:label="@string/fifthClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Sixth clue-->
-        <activity android:name=".SixthClue"
-            android:launchMode="singleTask"
+        <!-- Sixth clue -->
+        <activity
+            android:name=".SixthClue"
             android:label="@string/sixthClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Seventh clue-->
-        <activity android:name=".SeventhClue"
-            android:launchMode="singleTask"
+        <!-- Seventh clue -->
+        <activity
+            android:name=".SeventhClue"
             android:label="@string/seventhClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Eighth clue-->
-        <activity android:name=".EighthClue"
-            android:launchMode="singleTask"
+        <!-- Eighth clue -->
+        <activity
+            android:name=".EighthClue"
             android:label="@string/eightsClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Ninth clue-->
-        <activity android:name=".NinthClue"
+        <!-- Eight assist -->
+        <activity
+            android:name=".Morsing"
+            android:label="@string/eightsClue"
             android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- ninth clue -->
+        <activity
+            android:name=".NinthClue"
             android:label="@string/ninthClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Tenth clue-->
-        <activity android:name=".TenthClue"
-            android:launchMode="singleTask"
+        <!-- Tenth clue -->
+        <activity
+            android:name=".TenthClue"
             android:label="@string/tenthClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Eleventh clue-->
-        <activity android:name=".EleventhClue"
-            android:launchMode="singleTask"
+        <!-- Eleventh clue -->
+        <activity
+            android:name=".EleventhClue"
             android:label="@string/eleventhClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- Twelfth clue-->
-        <activity android:name=".TwelfthClue"
-            android:launchMode="singleTask"
+        <!-- Twelfth clue -->
+        <activity
+            android:name=".TwelfthClue"
             android:label="@string/twelfthClue"
+            android:launchMode="singleTask"
             android:parentActivityName=".ClueAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- messageScreen -->
+        <activity
+            android:name=".MessageScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- calendarScreen -->
+        <activity
+            android:name=".CalendaerScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- notesScreen -->
+        <activity
+            android:name=".NotesScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- listScreen -->
+        <activity
+            android:name=".ListScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- mapsScreen -->
+        <activity
+            android:name=".MapsScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- clockScreen -->
+        <activity
+            android:name=".ClockScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- linkedInScreen -->
+        <activity
+            android:name=".LinkedInScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- whatsAppScreen -->
+        <activity
+            android:name=".WhatsAppScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- contactsScreen -->
+        <activity
+            android:name=".ContactsScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- appStoreScreen -->
+        <activity
+            android:name=".AppStore"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- youTubeScreen -->
+        <activity
+            android:name=".YouTubeScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- settingsScreen -->
+        <activity
+            android:name=".SettingsScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- wolframScreen -->
+        <activity
+            android:name=".Wolfram"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- weatherScreen -->
+        <activity
+            android:name=".WeatherScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- photoScreen -->
+        <activity
+            android:name=".PhotoScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- callScreen -->
+        <activity
+            android:name=".CallScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- safariScreen -->
+        <activity
+            android:name=".SafariScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- gmailScreen -->
+        <activity
+            android:name=".GmailScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- musicScreen-->
+        <activity android:name=".MusicScreen"
+            android:label=""
+            android:launchMode="singleTask"
+            android:parentActivityName=".EighthClue"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"></activity>
-
     </application>
-
 
 </manifest>

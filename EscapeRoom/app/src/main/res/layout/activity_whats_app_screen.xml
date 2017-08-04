@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="watchtower.escaperoom.WhatsAppScreen"
+    android:layoutDirection="ltr"
+    android:background="@drawable/whatsapp"
+    android:id="@+id/whatsappLayout">
+
+    <Button
+        android:id="@+id/whatsAppButton"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:onClick="morse"
+        android:background="@color/trans"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="150dp" />
+
+</RelativeLayout>

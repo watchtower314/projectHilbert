@@ -11,4 +11,7 @@
     <color name="teal">#159696</color>
     <color name="yellow">#d8b208</color>
     <color name="red">#9d0808</color>
+    <color name="trans">#00FFFFFF</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="watchtower.escaperoom.CallScreen"
+    android:id="@+id/callLayout"
+    android:layoutDirection="ltr"
+    android:background="@drawable/call">
+
+    <Button
+        android:id="@+id/callButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:onClick="morse"
+        android:background="@color/trans"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+</RelativeLayout>
