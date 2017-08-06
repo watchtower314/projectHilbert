@@ -197,7 +197,7 @@ public class SeventhClue extends AppCompatActivity {
         else {
             if (i == 1) {
                 screen.setBackgroundResource(R.drawable.passcode1);
-                cancel.setTag(Game.DELETE);
+                cancel.setTag(Game.DELETE_TAG);
             }
             else if (i == 2)
                 screen.setBackgroundResource(R.drawable.passcode2);
@@ -205,13 +205,13 @@ public class SeventhClue extends AppCompatActivity {
                 screen.setBackgroundResource(R.drawable.passcode3);
             else
                 if(i == 222) {
-                    if(emergencia.getTag().toString().equalsIgnoreCase(Game.EMER)) {
+                    if(emergencia.getTag().toString().equalsIgnoreCase(Game.EMERGENCY_TAG)) {
                         Log.d("TKT7", "emergency");
                         Snackbarring(R.string.emergencia, screen);
                     }
                 }
             else
-                if(i == 111 && cancel.getTag().toString().equals(Game.DELETE))
+                if(i == 111 && cancel.getTag().toString().equals(Game.DELETE_TAG))
                 {
                     if(count == 3)
                     {
@@ -226,7 +226,7 @@ public class SeventhClue extends AppCompatActivity {
                         }
                         else {
                             screen.setBackgroundResource(R.drawable.iphonescreen);
-                            cancel.setTag(Game.CANCEL);
+                            cancel.setTag(Game.CANCEL_TAG);
                             Log.d("TKT7", "iphonescreen");
                         }
                     }

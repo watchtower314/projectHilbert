@@ -1,7 +1,6 @@
 package watchtower.escaperoom;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -47,10 +46,12 @@ public class EighthClue extends AppCompatActivity {
         screen = (RelativeLayout)findViewById(R.id.homeScreen);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS, 0);
         int clues = Game.gamePrefs.getInt("currentClue", 0);
-        hangOn(R.string.message);
+
 
         if(clues > clue)
             disableButtons();
+        else
+            hangOn(R.string.message);
 
     }
 
@@ -206,23 +207,6 @@ public class EighthClue extends AppCompatActivity {
         }
     }
 
-    /*
-    public void redirect(int i)
-    {
-        Intent intent = new Intent(this, Morsing.class);
-        intent.putExtra(Game.SCREEN, i);
-        startActivity(intent);
-    }
-
-    */
-
-    /*
-    public void back(View v)
-    {
-        screen.setBackgroundResource(R.drawable.homescreen);
-        enableButtons();
-    }
-    */
 
     public void disableButtons()
     {
@@ -254,16 +238,6 @@ public class EighthClue extends AppCompatActivity {
         AlertDialog.Builder message = new AlertDialog.Builder(this);
         message.setMessage(mensaje).create();
         message.show();
-    }
-
-    private boolean checkCameraHardware()
-    {
-        if(this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
-        {
-            return true;
-        }
-        else
-            return false;
     }
 
 

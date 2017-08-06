@@ -153,7 +153,7 @@ public class SixthClue extends AppCompatActivity {
     {
         Log.d("TKT6","disableEditText was called");
         checkButton6.setTag(Game.NEXT_TAG);
-        checkButton6.setTextColor(ContextCompat.getColor(this, R.color.blanco));
+        checkButton6.setTextColor(ContextCompat.getColor(this, R.color.blanco));//// TODO: 8/6/2017 use this to fix all similar
         checkButton6.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
         checkButton6.setText(R.string.continuar);
         sound.setEnabled(false);

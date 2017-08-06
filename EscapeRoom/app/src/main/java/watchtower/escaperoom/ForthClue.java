@@ -90,7 +90,7 @@ public class ForthClue extends AppCompatActivity {
         }
 
         pressForClue.setText(R.string.callMeMaybe);
-        pressForClue.setTextColor(getResources().getColor(R.color.cyan));
+        pressForClue.setTextColor(getResources().getColor(R.color.cyan));//// TODO: 8/6/2017 fix this 
         pressForClue.setEnabled(false);
         cont.setVisibility(View.VISIBLE);
 

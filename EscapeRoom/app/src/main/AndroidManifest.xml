@@ -3,6 +3,7 @@
     package="watchtower.escaperoom">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+  <!--   <uses-permission android:name="android.permission.RECORD_AUDIO" /> -->
 
     <application
         android:allowBackup="true"

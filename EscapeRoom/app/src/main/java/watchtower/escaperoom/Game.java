@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -18,17 +19,24 @@ import android.widget.TextView;
 
 public class Game {
 
-    public static final String GAME_PREFS = "ProgressFile";
     protected static SharedPreferences gamePrefs;
     public static SharedPreferences.Editor progressEdit;
+    //shared prefs----------------------------------------------
+    public static final String GAME_PREFS = "ProgressFile";
+    public static final String EIGHT_PASSED = "eightPassed";
     public static int clueNum;
+
+    //tags------------------------------------------------------
     public static final String CHECK_TAG = "check";
     public static final String NEXT_TAG = "next";
-    public static final String DELETE = "delete";
-    public static final String CANCEL = "cancel";
-    public static final String EMER = "emergency";
+    public static final String DELETE_TAG = "delete";
+    public static final String CANCEL_TAG = "cancel";
+    public static final String EMERGENCY_TAG = "emergency";
     public static final String SCREEN = "screen";
-    public static final String YELLOW_LOCK = "yellow";
+    public static final String YELLOW_LOCK_TAG = "yellow";
+    public static final String READY_TAG = "ready";
+
+    //eight clue
     public static final long dot = 200, dash = 400, letter_gap=100, word_gap=300;
     public static Vibrator vib;// = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
     public static MediaPlayer mediaPlayer;
@@ -36,7 +44,7 @@ public class Game {
 
     public static void updateSharedPref(Button b, int cNum)
     {
-
+        Log.d("TKT_game","updateSharedPref clue num: "+cNum);
         clueNum = cNum;
        // gamePrefs = getSharedPreferences(GAME_PREFS,0);
         progressEdit = gamePrefs.edit();
@@ -46,23 +54,34 @@ public class Game {
         b.setEnabled(true);
     }
 
+    public static void updateEightNineClues()
+    {
+        Log.d("TKT_game","updateEightNineClue");
+        progressEdit = gamePrefs.edit();
+        progressEdit.putBoolean(EIGHT_PASSED,true);
+        progressEdit.commit();
+    }
+
+    /*
     public static void whichScreen(int num)
     {
-
 
         progressEdit = gamePrefs.edit();
         progressEdit.putInt("screen",num);
         progressEdit.commit();
     }
+    */
 
 
 
     public static void getClue(int id, Context context)
     {
+        Log.d("TKT_game","getClue");
         switch (id)
         {
             case R.id.first:
             {
+                Log.d("TKT_game","first clue");
                 Intent intent = new Intent(context, FirstClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -71,6 +90,7 @@ public class Game {
             }
             case R.id.second:
             {
+                Log.d("TKT_game","second clue");
                 Intent intent = new Intent(context, SecondClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -79,6 +99,7 @@ public class Game {
             }
             case R.id.third:
             {
+                Log.d("TKT_game","third clue");
                 Intent intent = new Intent(context, ThirdClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -87,6 +108,7 @@ public class Game {
             }
             case R.id.fourth:
             {
+                Log.d("TKT_game","fourth clue");
                 Intent intent = new Intent(context, ForthClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -95,6 +117,7 @@ public class Game {
             }
             case R.id.fifth:
             {
+                Log.d("TKT_game","fifth clue");
                 Intent intent = new Intent(context, FifthClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -103,6 +126,7 @@ public class Game {
             }
             case R.id.sixth:
             {
+                Log.d("TKT_game","sixth clue");
                 Intent intent = new Intent(context, SixthClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -111,6 +135,7 @@ public class Game {
             }
             case R.id.seventh:
             {
+                Log.d("TKT_game","seventh clue");
                 Intent intent = new Intent(context, SeventhClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -119,6 +144,7 @@ public class Game {
             }
             case R.id.eighth:
             {
+                Log.d("TKT_game","eight clue");
                 Intent intent = new Intent(context, EighthClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -127,7 +153,8 @@ public class Game {
             }
             case R.id.ninth:
             {
-                Intent intent = new Intent(context, Morsing.class);
+                Log.d("TKT_game","ninth clue");
+                Intent intent = new Intent(context, NinthClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
@@ -135,6 +162,7 @@ public class Game {
             }
             case R.id.tenth:
             {
+                Log.d("TKT_game","tenth clue");
                 Intent intent = new Intent(context, TenthClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -143,6 +171,7 @@ public class Game {
             }
             case R.id.eleventh:
             {
+                Log.d("TKT_game","eleventh clue");
                 Intent intent = new Intent(context, EleventhClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -151,6 +180,7 @@ public class Game {
             }
             case R.id.twelfth:
             {
+                Log.d("TKT_game","twelfth clue");
                 Intent intent = new Intent(context, TwelfthClue.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -163,6 +193,7 @@ public class Game {
 
     public static void getSnackbar(int message, RelativeLayout activity)
     {
+        Log.d("TKT_game","getSnackBar");
         Snackbar error = Snackbar.make(activity, message, Snackbar.LENGTH_LONG);
         View errorView = error.getView();
         errorView.setBackgroundColor(Color.DKGRAY);

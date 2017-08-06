@@ -13,7 +13,7 @@ public class nine extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_nine);
+        setContentView(R.layout.activity_ninth_clue);
 
 
     }

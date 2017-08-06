@@ -18,8 +18,8 @@ public class ClueAct extends AppCompatActivity {
     EditText pass2;
     EditText pass3;
     EditText pass4;
-    EditText pass5, password;
-    Button submit, submitPass;
+    EditText pass5;
+    Button submit;
     public RelativeLayout screen;
     public final int clue = 0;
     public final String EIGHT_CODE = "photo magnet";
@@ -41,24 +41,28 @@ public class ClueAct extends AppCompatActivity {
         screen = (RelativeLayout)findViewById(R.id.activity_clue);
         initButtons();
         int clues = Game.gamePrefs.getInt("currentClue",0);
-        System.out.println("clues now: "+clues);
-        if(clues != clue)
-            setScreen(clues);
+        Log.d("TKT_clue","clues now: "+clues);
+        //if(clues != clue)
+        setScreen(clues);
     }
 
     public void setScreen(int clues)
     {
+        Log.d("TXT_clues","setScreens ");
         for(int i = 0; i < clues; i++)
         {
-            System.out.println("TXT: i: "+i);
+            Log.d("TXT_clues","i: "+i);
             //open access to these buttons
             clueButtons[i].setBackgroundResource(R.drawable.androidunlockg1);
             clueButtons[i].setEnabled(true);
         }
-        if(clues == 8) {
+        if(clues == 8 )
+        {//&& !Game.gamePrefs.getBoolean("eightPassed",false)) {
+            //// TODO: 8/5/2017 check if there is no problem here
+            Log.d("TKT_clue"," clue == 8, eight isn't passed");
             clueButtons[8].setBackgroundResource(R.drawable.androidlockyellow);
             clueButtons[8].setEnabled(true);
-            clueButtons[8].setTag(Game.YELLOW_LOCK);
+            clueButtons[8].setTag(Game.YELLOW_LOCK_TAG);
         }
 
         disableEditText();
@@ -130,7 +134,7 @@ public class ClueAct extends AppCompatActivity {
         Log.d("TKT_clue", "is evable: " + v.isEnabled());
         if(v.isEnabled())
         {
-            if(v.getTag().toString().equalsIgnoreCase(Game.YELLOW_LOCK))
+            if(v.getTag().toString().equalsIgnoreCase(Game.YELLOW_LOCK_TAG))
             {
                 // // TODO: 8/3/2017 problem with this 
                 //popup a window with space to write code in it
@@ -160,7 +164,7 @@ public class ClueAct extends AppCompatActivity {
 
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.enter_password);
-        dialog.setTitle("titulo");
+        //dialog.setTitle("titulo");
         dialog.setCanceledOnTouchOutside(false);
 
         TextView textView = (TextView)dialog.findViewById(R.id.dialogTitle);
@@ -178,9 +182,12 @@ public class ClueAct extends AppCompatActivity {
                 if(editText.getText().toString().equalsIgnoreCase(EIGHT_CODE))
                 {
                     Log.d("TKT_clue", "pass = EIGHT_CODE");
-                    clueButtons[8].setTag("");
+                    clueButtons[8].setTag(Game.READY_TAG);
                     clueButtons[8].setBackgroundResource(R.drawable.androidunlockg1);
+                    Game.updateEightNineClues();
+                    Game.updateSharedPref(ClueAct.clueButtons[8], 9);
                     dialog.dismiss();
+
                 }
                 else
                 {
