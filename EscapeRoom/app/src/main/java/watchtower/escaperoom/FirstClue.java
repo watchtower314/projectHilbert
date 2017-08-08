@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class FirstClue extends AppCompatActivity {
     EditText red1, blue1, red2, blue2;
@@ -28,8 +28,7 @@ public class FirstClue extends AppCompatActivity {
         blue2 = (EditText)findViewById(R.id.blueBox2);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
         checkButton1 = (Button)findViewById(R.id.firstCheck);
-        int clues = Game.gamePrefs.getInt("currentClue",0);
-        System.out.println("this is clues: " +clues);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
         Log.d("TKT1", "onCreate clue1");
         if(clues > clue)
             disableEditText();
@@ -64,7 +63,7 @@ public class FirstClue extends AppCompatActivity {
             else
                 {
                     Log.d("TKT1", "ANSWER is incorrect");
-                    Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.activity_marbles));
+                    Toast.makeText(FirstClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
                     red1.setText("");
                     red2.setText("");
                     blue1.setText("");

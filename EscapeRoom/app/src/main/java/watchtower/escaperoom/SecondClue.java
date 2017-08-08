@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class SecondClue extends AppCompatActivity {
 
@@ -27,11 +27,9 @@ public class SecondClue extends AppCompatActivity {
         h = (EditText)findViewById(R.id.h);
         r = (EditText)findViewById(R.id.r);
         checkButton2 = (Button)findViewById(R.id.secondCheck);
-        //continuar = (Button)findViewById(R.id.secondContinue);
 
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
-        int clues = Game.gamePrefs.getInt("currentClue",0);
-        System.out.println("this is clues: " +clues);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
         if(clues > clue)
             disableEditText();
         else
@@ -54,7 +52,7 @@ public class SecondClue extends AppCompatActivity {
                 disableEditText();
             } else {
                 Log.d("TKT2", "ans != tomorrow");
-                Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.activity_wall_picture));
+                Toast.makeText(SecondClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
                 m.setText("");
                 h.setText("");
                 r.setText("");

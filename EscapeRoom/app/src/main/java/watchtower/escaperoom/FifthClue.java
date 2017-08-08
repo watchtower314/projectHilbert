@@ -2,17 +2,15 @@ package watchtower.escaperoom;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class FifthClue extends AppCompatActivity {
 
@@ -29,12 +27,10 @@ public class FifthClue extends AppCompatActivity {
         //cont = (Button)findViewById(R.id.fifthContinue);
 
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
-        int clues = Game.gamePrefs.getInt("currentClue",0);
-        System.out.println("this is clues: " +clues);
-        System.out.println("got here now");
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
 
         if(clues > clue) {
-            checkButton5.setTag("arrowy");
+            checkButton5.setTag(Game.ARROWY_TAG);
             disableEditText();
 
         }
@@ -53,7 +49,7 @@ public class FifthClue extends AppCompatActivity {
     public void checkAns(View v)
     {
         Log.d("TKT5","checkAns was pressed");
-        if(checkButton5.getTag().equals("bluetick")) {
+        if(checkButton5.getTag().equals(Game.BLUE_TICK)) {
             String ans = book.getText().toString();
             if (ans.equalsIgnoreCase(BOOK))
             {
@@ -61,15 +57,31 @@ public class FifthClue extends AppCompatActivity {
                 Log.d("TKT5", "ans = book");
                 checkButton5.setBackgroundResource(R.drawable.tickc);
                 Game.updateSharedPref(ClueAct.clueButtons[clue], clue + 1);
-                Snackbarring(R.string.wait, (RelativeLayout) findViewById(R.id.findMyPhone));
-                checkButton5.setTag("arrowy");
-                disableEditText();
+                //Snackbarring(R.string.wait, (RelativeLayout) findViewById(R.id.findMyPhone));
+                Toast.makeText(FifthClue.this, R.string.wait, Toast.LENGTH_SHORT).show();
+                new CountDownTimer(2000,1000)
+                {
+
+                    @Override
+                    public void onTick(long l) {
+                        Log.d("TKT5", "ticking");
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        Log.d("TKT5", "onFinish");
+                        checkButton5.setTag(Game.ARROWY_TAG);
+                        checkButton5.setBackgroundResource(R.drawable.arrowy);
+                    }
+                }.start();
+
+                book.setEnabled(false);
             }
             else
                 {
                 Log.d("TKT5", "ans != book");
-                Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.findMyPhone));
-                book.setText("");
+                    Toast.makeText(FifthClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
+                    book.setText("");
             }
 
         }
@@ -78,31 +90,6 @@ public class FifthClue extends AppCompatActivity {
             Log.d("Tkt5","tag = arrowy");
             nextClue();
         }
-    }
-
-
-    public static void Snackbarring(int message, RelativeLayout activity)
-    {
-        Snackbar error = Snackbar.make(activity, message, Snackbar.LENGTH_LONG);
-        View errorView = error.getView();
-        errorView.setBackgroundColor(Color.DKGRAY);
-        TextView textView = (TextView)errorView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.RED);
-        error.show();
-
-        error.setCallback(new Snackbar.Callback() {
-
-            @Override
-            public void onDismissed(Snackbar snackbar, int event) {
-                if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
-                    checkButton5.setBackgroundResource(R.drawable.arrowy);
-                }
-            }
-
-            @Override
-            public void onShown(Snackbar snackbar) {
-            }
-        });
     }
 
     public void disableEditText()
@@ -139,6 +126,18 @@ public class FifthClue extends AppCompatActivity {
 
     }
 
+
+    /*
+    public void escapeThis(View v)
+    {this function is for redoing the level during debugging, instead of reinstalling the app
+        checkButton5.setTag(Game.BLUE_TICK);
+        checkButton5.setBackgroundResource(R.drawable.tickcyan);
+        book.setEnabled(true);
+        book.setText("");
+        initBoxes();
+
+    }
+    */
     @Override
     public void onBackPressed() {
         super.onBackPressed();

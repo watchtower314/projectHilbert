@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.1'
     defaultConfig {
         applicationId "watchtower.escaperoom"
-        minSdkVersion 14
-        targetSdkVersion 23
+        minSdkVersion 15
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,13 +20,21 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.1', {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:23.1.0'
-    compile 'com.android.support:support-v4:23.1.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    //compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.1'
+    //compile 'com.android.support:support-v7:25.3.1'
     testCompile 'junit:junit:4.12'
+    //lockview
+    compile 'io.paperdb:paperdb:2.0'
+    compile 'com.andrognito.patternlockview:patternlockview:1.0.0'
+    //gravity view
+    //compile 'co.gofynd.library:gravity-view:1.0'
+
+    //the addition of the lockview and gravity view caused a problem that took me forever to fix,
+    //so if the problem happens again, change back to last git push that was on 060817 "added level nine"
 }

@@ -42,14 +42,21 @@ public class NinthClue extends AppCompatActivity{
         knock = (ImageButton)findViewById(R.id.knockKnockKnock);
         otherScreen = (RelativeLayout)findViewById(R.id.matchPatternLayout);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS, 0);
-        int clues = Game.gamePrefs.getInt("currentClue", 0);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE, 0);
         if(clues > clue)
             disableEditText();
-        //initButtons();
-        //knocks[0] = System.currentTimeMillis();
     }
 
 
+    /*
+    public void escapeThis(View v)
+    {
+        //lock.setVisibility(View.VISIBLE);
+        lock.setEnabled(true);
+        //lock.setBackgroundResource(R.drawable.androidunlockg);
+        knock.setEnabled(true);
+    }
+    */
     public void initButtons(Dialog dialog)
     {
         otherScreen = (RelativeLayout)dialog.findViewById(R.id.matchPatternLayout);
@@ -539,7 +546,7 @@ public class NinthClue extends AppCompatActivity{
     public boolean checkIntervals()
     {
         Log.d("TKT9","checkInterval");
-        long epsilon = 30;
+        long epsilon = 35;
         long firstInterval = knocks[1]-knocks[0];
         long secondInterval = knocks[2]-knocks[1];
         Log.d("TKT9","firstInterval: "+firstInterval);
@@ -570,6 +577,7 @@ public class NinthClue extends AppCompatActivity{
 
     public void nextClue(final Dialog dialog)
     {
+        greenButtons();
         Log.d("TKT9","nextClue was called");
         disableEditText();
         Game.updateSharedPref(ClueAct.clueButtons[clue], clue + 1);
@@ -594,13 +602,9 @@ public class NinthClue extends AppCompatActivity{
 
     }
 
-    public void disableEditText()
+
+    public void greenButtons()
     {
-        lock.setVisibility(View.VISIBLE);
-        lock.setEnabled(false);
-        lock.setBackgroundResource(R.drawable.androidunlockg1);
-        knock.setEnabled(false);
-        /*
         nine1.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
         nine2.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
         nine3.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
@@ -620,7 +624,14 @@ public class NinthClue extends AppCompatActivity{
         nine27.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
         nine28.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
         nine30.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
-        */
+    }
+    public void disableEditText()
+    {
+        lock.setVisibility(View.VISIBLE);
+        lock.setEnabled(false);
+        lock.setBackgroundResource(R.drawable.androidunlockg1);
+        knock.setEnabled(false);
+
 
     }
 

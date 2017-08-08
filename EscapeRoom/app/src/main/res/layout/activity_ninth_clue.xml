@@ -9,8 +9,12 @@
     android:layoutDirection="ltr"
     android:id="@+id/doorLayout"
     android:background="@drawable/door">
-
-
+<!--
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:onClick="escapeThis"/>
+    -->
 
     <ImageButton
         android:id="@+id/knockKnockKnock"

@@ -2,18 +2,16 @@ package watchtower.escaperoom;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class SeventhClue extends AppCompatActivity {
 
@@ -30,9 +28,8 @@ public class SeventhClue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seventh_clue);
         screen = (RelativeLayout)findViewById(R.id.circles);
-        ///check = (Button) findViewById(R.id.sixthContinue);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS, 0);
-        int clues = Game.gamePrefs.getInt("currentClue", 0);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE, 0);
         Log.d("TKT7", "onCreate");
         initButtons();
         mess = R.string.wait;
@@ -40,7 +37,7 @@ public class SeventhClue extends AppCompatActivity {
         if (clues > clue) {
             showMessage = false;
             screen.setBackgroundResource(R.drawable.passcode4);
-            timer(2500);
+            timer(2000);
         }
 
         //else
@@ -207,7 +204,8 @@ public class SeventhClue extends AppCompatActivity {
                 if(i == 222) {
                     if(emergencia.getTag().toString().equalsIgnoreCase(Game.EMERGENCY_TAG)) {
                         Log.d("TKT7", "emergency");
-                        Snackbarring(R.string.emergencia, screen);
+                        //Snackbarring(R.string.emergencia, screen);
+                        call911();
                     }
                 }
             else
@@ -293,34 +291,23 @@ public class SeventhClue extends AppCompatActivity {
     }
 
 
-    public static void Snackbarring(int message, RelativeLayout activity)
+    public void call911()
     {
-        Log.d("TKT7", "snackbarring was called");
-        Snackbar error = Snackbar.make(activity, message, Snackbar.LENGTH_LONG);
-        View errorView = error.getView();
-        errorView.setBackgroundColor(Color.DKGRAY);
-        TextView textView = (TextView)errorView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.YELLOW);
-        textView.setTextSize(20);
-        error.show();
-
-        error.setCallback(new Snackbar.Callback() {
-
+        Toast.makeText(SeventhClue.this, R.string.emergencia, Toast.LENGTH_LONG).show();
+        new CountDownTimer(3500,1000)
+        {
             @Override
-            public void onDismissed(Snackbar snackbar, int event) {
-                if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
-                    if(!flag) {
-                        flag = true;
-                        Snackbarring(R.string.jk, screen);
-                    }
+            public void onTick(long l) {
 
-                }
             }
 
             @Override
-            public void onShown(Snackbar snackbar) {
+            public void onFinish() {
+                Toast.makeText(SeventhClue.this, R.string.jk, Toast.LENGTH_SHORT).show();
             }
-        });
+        }.start();
+
+
     }
 
 
@@ -331,6 +318,14 @@ public class SeventhClue extends AppCompatActivity {
         message.setMessage(R.string.wait).create();
         message.show();
     }
+
+
+    public void escapeThis(View v)
+    {//this function is for redoing the level during debugging, instead of reinstalling the app
+        initButtons();
+
+    }
+
 
     public void nextClue()
     {

@@ -21,7 +21,7 @@ public class MessageScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_screen);
-        morseButton = (Button)findViewById(R.id.iMusicButton);
+        morseButton = (Button)findViewById(R.id.iMessageButton);
         Log.d("TKT_message","onBackPressed");
     }
 

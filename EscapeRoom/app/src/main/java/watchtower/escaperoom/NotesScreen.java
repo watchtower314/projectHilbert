@@ -44,15 +44,7 @@ public class NotesScreen extends AppCompatActivity {
         }
     }
 
-    /*
-    public void quitCmd(View v)
-    {
-        Log.d("TKT_notes", "quitCmd");
-        screen.setBackgroundResource(R.drawable.notes);
-        enterCMD.setEnabled(true);
-        quitCMD.setEnabled(false);
-    }
-    */
+
 
     @Override
     public void onBackPressed() {

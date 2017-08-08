@@ -42,6 +42,7 @@
                     android:textAlignment="center"
                     android:hint="@string/firstEmoji"
                     android:textColorHint="@android:color/holo_blue_light"
+                    android:focusableInTouchMode="true"
                     >
                 </EditText>
 

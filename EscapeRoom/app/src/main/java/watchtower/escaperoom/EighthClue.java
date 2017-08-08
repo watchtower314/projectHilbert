@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 
 public class EighthClue extends AppCompatActivity {
 
-    public Button backArrow, iMessage, iCalendar, iNotes, iList, iMaps, iClock, LinkedIn, whatsApp, iContacts, appStore, youTube, iCamara, iSettings, Wolfram, weather, iPhotos, iPhone, Safari, Gmail, iMusic;
+    public Button  iMessage, iCalendar, iNotes, iList, iMaps, iClock, LinkedIn, whatsApp, iContacts, appStore, youTube, iCamara, iSettings, Wolfram, weather, iPhotos, iPhone, Safari, Gmail, iMusic;
     RelativeLayout screen;
     boolean out = true;
     public static int clue = 8;
@@ -19,8 +19,6 @@ public class EighthClue extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eighth_clue);
-        //Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar1);
-        //setSupportActionBar(myToolbar);
         iMessage = (Button)findViewById(R.id.iMessage);
         iCalendar = (Button)findViewById(R.id.calendar);
         iNotes = (Button)findViewById(R.id.notes);
@@ -45,7 +43,7 @@ public class EighthClue extends AppCompatActivity {
         Log.d("TKT8", "onCreate");
         screen = (RelativeLayout)findViewById(R.id.homeScreen);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS, 0);
-        int clues = Game.gamePrefs.getInt("currentClue", 0);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE, 0);
 
 
         if(clues > clue)

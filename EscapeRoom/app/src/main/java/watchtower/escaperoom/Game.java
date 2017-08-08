@@ -25,16 +25,24 @@ public class Game {
     public static final String GAME_PREFS = "ProgressFile";
     public static final String EIGHT_PASSED = "eightPassed";
     public static int clueNum;
+    public static String CURRENT_CLUE = "currentClue";
 
     //tags------------------------------------------------------
-    public static final String CHECK_TAG = "check";
-    public static final String NEXT_TAG = "next";
+    public static final String CHECK_TAG = "check";//clues: 1, 2, 6
+    public static final String NEXT_TAG = "next";//clues: 1, 2, 6
+    //clue 7
     public static final String DELETE_TAG = "delete";
     public static final String CANCEL_TAG = "cancel";
     public static final String EMERGENCY_TAG = "emergency";
-    public static final String SCREEN = "screen";
+
+
+    //clueAct
     public static final String YELLOW_LOCK_TAG = "yellow";
     public static final String READY_TAG = "ready";
+
+    //clue 5
+    public static final String ARROWY_TAG = "arrowy"; //:= arrow yellow
+    public static final String BLUE_TICK="bluetick";
 
     //eight clue
     public static final long dot = 200, dash = 400, letter_gap=100, word_gap=300;
@@ -42,6 +50,7 @@ public class Game {
     public static MediaPlayer mediaPlayer;
 
 
+    //public static final String SCREEN = "screen";
     public static void updateSharedPref(Button b, int cNum)
     {
         Log.d("TKT_game","updateSharedPref clue num: "+cNum);

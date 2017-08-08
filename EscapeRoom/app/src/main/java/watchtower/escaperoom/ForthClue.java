@@ -2,14 +2,14 @@ package watchtower.escaperoom;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class ForthClue extends AppCompatActivity {
 
@@ -28,7 +28,7 @@ public class ForthClue extends AppCompatActivity {
         cont = (Button)findViewById(R.id.fourthContinue);
 
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
-        int clues = Game.gamePrefs.getInt("currentClue",0);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
 
         if(clues > clue)
             disableEditText();
@@ -104,6 +104,7 @@ public class ForthClue extends AppCompatActivity {
             ans+=numbers[i].getText().toString();
         }
 
+        Log.d("TKT4","ans"+ans);
         if(ans.equals(phoneNumber))
         {
             Log.d("TKT4","ans = phoneNumber");
@@ -113,11 +114,12 @@ public class ForthClue extends AppCompatActivity {
         else
         {
             Log.d("TKT4","ans != phoneNumber");
-            Game.getSnackbar(R.string.firstWrong, (RelativeLayout)findViewById(R.id.callMe));
+            Toast.makeText(ForthClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
             for(int i = 0; i<numbers.length; i++)
             {
                 numbers[i].setText("");
             }
+            ans="";
         }
     }
 

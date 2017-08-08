@@ -1,10 +1,9 @@
 package watchtower.escaperoom;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,8 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class ThirdClue extends AppCompatActivity {
 
@@ -25,6 +23,7 @@ public class ThirdClue extends AppCompatActivity {
     public final String r = "חדר";
     public final String s ="שינה";
     public final String m ="סבתא";
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +35,11 @@ public class ThirdClue extends AppCompatActivity {
         c1 = (Button) findViewById(R.id.checkMark1);
         c2 = (Button) findViewById(R.id.checkMark2);
         c3 = (Button) findViewById(R.id.checkMark3);
+        context = this;
 
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
 
-        int clues = Game.gamePrefs.getInt("currentClue",0);
-        System.out.println("this is clues: " +clues);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
         if(clues > clue)
             disableEditText();
         else
@@ -89,14 +88,12 @@ public class ThirdClue extends AppCompatActivity {
                     c2.setBackgroundResource(R.drawable.tickcyan);
                     sleep.setEnabled(true);
                     sleep.setHintTextColor(ContextCompat.getColor(this, R.color.cyan));
-
-
                 }
                 else {
                     Log.d("TKT3","ans != room");
                     c1.setBackgroundResource(R.drawable.x1);
-                    Snackbarring(R.string.firstWrong, (RelativeLayout)findViewById(R.id.memawRoom), 1);
-                    //err(room);
+                    room.setText("");
+                    Toast.makeText(ThirdClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
                 }
                 break;
             }
@@ -113,14 +110,12 @@ public class ThirdClue extends AppCompatActivity {
                     c3.setBackgroundResource(R.drawable.tickcyan);
                     memaw.setEnabled(true);
                     memaw.setHintTextColor(ContextCompat.getColor(this, R.color.cyan));
-
-
                 }
                 else {
                     Log.d("TKT3","ans != sleep");
-                    //err(sleep);
                     c2.setBackgroundResource(R.drawable.x1);
-                    Snackbarring(R.string.firstWrong, (RelativeLayout)findViewById(R.id.memawRoom), 2);
+                    sleep.setText("");
+                    Toast.makeText(ThirdClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
                 }
 
                 break;
@@ -141,9 +136,9 @@ public class ThirdClue extends AppCompatActivity {
                 }
                 else {
                     Log.d("TKT3","ans != sleep");
-                    //err(memaw);
                     c3.setBackgroundResource(R.drawable.x1);
-                    Snackbarring(R.string.firstWrong, (RelativeLayout)findViewById(R.id.memawRoom), 3);
+                    memaw.setText("");
+                    Toast.makeText(ThirdClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
                 }
                 break;
             }
@@ -151,45 +146,6 @@ public class ThirdClue extends AppCompatActivity {
         }
     }
 
-    public void Snackbarring(int message, RelativeLayout activity, final int tick)
-    {
-
-        Log.d("TKT7", "snackbarring was called");
-        Snackbar error = Snackbar.make(activity, message, Snackbar.LENGTH_LONG);
-        View errorView = error.getView();
-        errorView.setBackgroundColor(Color.DKGRAY);
-        TextView textView = (TextView)errorView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.RED);
-        error.show();
-
-        error.setCallback(new Snackbar.Callback() {
-
-            @Override
-            public void onDismissed(Snackbar snackbar, int event) {
-                if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
-                    if(tick == 1)
-                        c1.setBackgroundResource(R.drawable.tickcyan);
-                    else
-                        if(tick == 2)
-                            c2.setBackgroundResource(R.drawable.tickcyan);
-                        else
-                            c3.setBackgroundResource(R.drawable.tickcyan);
-
-                }
-            }
-
-            @Override
-            public void onShown(Snackbar snackbar) {
-            }
-        });
-    }
-
-    public void err (EditText t)
-    {
-        Log.d("TKT3","err was called");
-        Game.getSnackbar(R.string.firstWrong, (RelativeLayout)findViewById(R.id.memawRoom));
-        t.setText("");
-    }
 
     public void hideKeyboard(View view) {
         Log.d("TKT3","hiding keyboard");
@@ -212,6 +168,10 @@ public class ThirdClue extends AppCompatActivity {
                 if (!hasFocus) {
                     hideKeyboard(v);
                 }
+                else {
+                    if (c1.getBackground() == (ContextCompat.getDrawable(context, R.drawable.x1))) ;
+                    c1.setBackgroundResource(R.drawable.tickcyan);
+                }
             }
         });
         sleep.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -220,6 +180,11 @@ public class ThirdClue extends AppCompatActivity {
                 if (!hasFocus) {
                     hideKeyboard(v);
                 }
+                else {
+                    if (c2.getBackground() == (ContextCompat.getDrawable(context, R.drawable.x1))) ;
+                        c2.setBackgroundResource(R.drawable.tickcyan);
+                }
+
             }
         });
         memaw.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -228,35 +193,12 @@ public class ThirdClue extends AppCompatActivity {
                 if (!hasFocus) {
                     hideKeyboard(v);
                 }
-            }
-        });
-        /*
-        c1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
+                else {
+                    if (c3.getBackground() == (ContextCompat.getDrawable(context, R.drawable.x1))) ;
+                        c3.setBackgroundResource(R.drawable.tickcyan);
                 }
             }
         });
-        c2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
-        c3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
-*/
-
     }
 
 

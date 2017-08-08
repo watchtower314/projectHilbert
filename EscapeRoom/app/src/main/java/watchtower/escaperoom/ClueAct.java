@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ClueAct extends AppCompatActivity {
     public static Button [] clueButtons;
@@ -23,6 +24,7 @@ public class ClueAct extends AppCompatActivity {
     public RelativeLayout screen;
     public final int clue = 0;
     public final String EIGHT_CODE = "photo magnet";
+    int clues;
 
 
 
@@ -40,10 +42,10 @@ public class ClueAct extends AppCompatActivity {
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
         screen = (RelativeLayout)findViewById(R.id.activity_clue);
         initButtons();
-        int clues = Game.gamePrefs.getInt("currentClue",0);
+        clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
         Log.d("TKT_clue","clues now: "+clues);
-        //if(clues != clue)
-        setScreen(clues);
+        if(clues != clue)
+            setScreen(clues);
     }
 
     public void setScreen(int clues)
@@ -70,6 +72,7 @@ public class ClueAct extends AppCompatActivity {
 
     public void initButtons()
     {
+        Log.d("TKT_clue","initButtons");
         clueButtons = new Button [] {(Button)findViewById(R.id.first), (Button)findViewById(R.id.second), (Button)findViewById(R.id.third),
                 (Button)findViewById(R.id.fourth), (Button)findViewById(R.id.fifth), (Button)findViewById(R.id.sixth),
                 (Button)findViewById(R.id.seventh), (Button)findViewById(R.id.eighth), (Button)findViewById(R.id.ninth),
@@ -85,6 +88,7 @@ public class ClueAct extends AppCompatActivity {
 
     public void checkPassword(View v)
     {
+        Log.d("TKT_clue","checkPassword");
         InputMethodManager im = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         im.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         String password = "M5439";
@@ -95,7 +99,8 @@ public class ClueAct extends AppCompatActivity {
         System.out.println("password: "+password);
         System.out.println("ans: "+ans);
             if(!ans.equals(password)) {
-               Game.getSnackbar(R.string.error, (RelativeLayout)findViewById(R.id.activity_clue));
+               //Game.getSnackbar(R.string.error, (RelativeLayout)findViewById(R.id.activity_clue));
+                Toast.makeText(ClueAct.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
                 pass1.setText("");
                 pass2.setText("");
                 pass3.setText("");
@@ -107,6 +112,8 @@ public class ClueAct extends AppCompatActivity {
 
                 submit.setEnabled(false);
                 Game.updateSharedPref(clueButtons[clue], clue+1);
+                clues = 1;
+                setScreen(clues);
                 disableEditText();
 
 
@@ -193,7 +200,8 @@ public class ClueAct extends AppCompatActivity {
                 {
                     Log.d("TKT_clue", "pass = EIGHT_CODE");
                     dialog.dismiss();
-                    Game.getSnackbar(R.string.wrongPassword, screen);
+                    Toast.makeText(ClueAct.this, R.string.wrongPassword, Toast.LENGTH_SHORT).show();
+
 
                 }
 

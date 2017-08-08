@@ -90,7 +90,7 @@ public class YouTubeScreen extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        Log.d("TKT_youTube","opStop");
+        Log.d("TKT_youTube","onStop");
         mediaPlayer.release();
         super.onStop();
     }

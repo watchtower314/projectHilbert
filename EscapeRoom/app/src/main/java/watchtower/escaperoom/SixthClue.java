@@ -11,8 +11,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This cclue is when the users find the phone,
@@ -44,7 +44,7 @@ public class SixthClue extends AppCompatActivity {
         checkButton6 = (Button)findViewById(R.id.sixthCheck);
 
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
-        int clues = Game.gamePrefs.getInt("currentClue",0);
+        int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
 
         if(clues > clue)
             disableEditText();
@@ -58,16 +58,7 @@ public class SixthClue extends AppCompatActivity {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-/*
-    public void vibratePhone(View v)
-    {
-        //Intent intentVibration = new Intent(getApplicationContext(), VibrateService.class);
-        //startService(intentVibration);
-        Vibrator vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 
-        vib.vibrate(3000);
-    }
-*/
     public void initBoxes()
     {
         Log.d("TKT6","initBoxes was pressed");
@@ -134,7 +125,7 @@ public class SixthClue extends AppCompatActivity {
             }
             else {
                 Log.d("TKT6","ans != pie");
-                Game.getSnackbar(R.string.firstWrong, (RelativeLayout) findViewById(R.id.bringMePie));
+                Toast.makeText(SixthClue.this, R.string.firstWrong, Toast.LENGTH_SHORT).show();
                 pText.setText("");
                 iText.setText("");
                 eText.setText("");
@@ -172,32 +163,5 @@ public class SixthClue extends AppCompatActivity {
         finish();
 
     }
-
- /*
-
-    public static void Snackbarring(int message, RelativeLayout activity)
-    {
-        Snackbar error = Snackbar.make(activity, message, Snackbar.LENGTH_LONG);
-        View errorView = error.getView();
-        errorView.setBackgroundColor(Color.DKGRAY);
-        TextView textView = (TextView)errorView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.RED);
-        error.show();
-
-        error.setCallback(new Snackbar.Callback() {
-
-            @Override
-            public void onDismissed(Snackbar snackbar, int event) {
-                if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
-                    check.setBackgroundResource(R.drawable.arrowy);
-                }
-            }
-
-            @Override
-            public void onShown(Snackbar snackbar) {
-            }
-        });
-    }
-*/
 
 }
