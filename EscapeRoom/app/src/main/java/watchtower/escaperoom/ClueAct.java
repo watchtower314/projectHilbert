@@ -3,6 +3,7 @@ package watchtower.escaperoom;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,8 +24,12 @@ public class ClueAct extends AppCompatActivity {
     Button submit;
     public RelativeLayout screen;
     public final int clue = 0;
-    public final String EIGHT_CODE = "photo magnet";
+    public final String EIGHT_CODE = "photo magnet";//// TODO: 8/9/2017 set code 
     int clues;
+    boolean first, last;
+    final int level7 = 7, level12=12;
+    final String FINAL_CODE = "";//// TODO: 8/9/2017 set code
+
 
 
 
@@ -43,17 +48,32 @@ public class ClueAct extends AppCompatActivity {
         screen = (RelativeLayout)findViewById(R.id.activity_clue);
         initButtons();
         clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
+        first = Game.gamePrefs.getBoolean(Game.FIRST, true);
+        last = Game.gamePrefs.getBoolean(Game.LAST, true);
         Log.d("TKT_clue","clues now: "+clues);
+        Log.d("TKT_clue","first: "+first);
+        Log.d("TKT_clue","last: "+last);
         if(clues != clue)
             setScreen(clues);
+
+    }
+
+    public void lastClueAlert(int mensaje)
+    {//shown right before entering 12th clue
+        Log.d("TKT_clue", "hangOn message is shows");
+        AlertDialog.Builder message = new AlertDialog.Builder(this);
+        message.setMessage(mensaje).create();
+        message.show();
+
     }
 
     public void setScreen(int clues)
     {
-        Log.d("TXT_clues","setScreens ");
+        Log.d("TKT_clue","clues: "+clues);
+        Log.d("TKT_clues","setScreens ");
         for(int i = 0; i < clues; i++)
         {
-            Log.d("TXT_clues","i: "+i);
+            Log.d("TKT_clues","i: "+i);
             //open access to these buttons
             clueButtons[i].setBackgroundResource(R.drawable.androidunlockg1);
             clueButtons[i].setEnabled(true);
@@ -66,6 +86,19 @@ public class ClueAct extends AppCompatActivity {
             clueButtons[8].setEnabled(true);
             clueButtons[8].setTag(Game.YELLOW_LOCK_TAG);
         }
+        if(clues == 12 && first)
+        {//shown before enterinf level 12
+            //show alert
+            Log.d("TKT_clues","clue == 12, first: "+first);
+            lastClueAlert(R.string.lastClue);
+            Game.updateFirst();
+        }
+        else
+            if(clues == 12 && last)
+            {
+                Log.d("TKT_clues","clues == 12, last: "+last);
+                showDialogMessage(level12, R.string.finished);
+            }
 
         disableEditText();
     }
@@ -138,7 +171,7 @@ public class ClueAct extends AppCompatActivity {
 
     public void goToClue(View v)
     {
-        Log.d("TKT_clue", "is evable: " + v.isEnabled());
+        Log.d("TKT_clue", "is enable: " + v.isEnabled());
         if(v.isEnabled())
         {
             if(v.getTag().toString().equalsIgnoreCase(Game.YELLOW_LOCK_TAG))
@@ -147,23 +180,18 @@ public class ClueAct extends AppCompatActivity {
                 //popup a window with space to write code in it
                 Log.d("TKT ClueAct","tag = yellowLock");
                 Log.d("TKT ClueAct", "tag: "+v.getTag().toString());
-                showDialogMessage();
+                showDialogMessage(level7, R.string.enterPassword);
             }
             else {
+                Log.d("TKT_clue","tag isn't yellow");
                 int id = v.getId();
                 Game.getClue(id, this);
             }
         }
-            else
-            {
-                Log.d("TKT ClueAct","access denied");
-            //System.out.println("ACCESS DENIED");
-            //Game.getSnackbar(R.string.accessDenied, (RelativeLayout)findViewById(R.id.activity_clue));
-            }
 
     }
 
-    public void showDialogMessage()
+    public void showDialogMessage(final int level, int message)
     {
         Log.d("TKT ClueAct","showDialogMessage was called");
         //setContentView(R.layout.enter_password);
@@ -174,47 +202,77 @@ public class ClueAct extends AppCompatActivity {
         //dialog.setTitle("titulo");
         dialog.setCanceledOnTouchOutside(false);
 
-        TextView textView = (TextView)dialog.findViewById(R.id.dialogTitle);
-        //textView.setText("הכניסו את הקוד שמצאתם ברמזז הקודם");
+
+
+        final TextView textView = (TextView)dialog.findViewById(R.id.dialogTitle);
+        //TextView textView = (TextView)dialog.findViewById(R.id.dialogTitle);
+        textView.setText(message);
         final EditText editText = (EditText)dialog.findViewById(R.id.passwordText);
-        //editText.setHint("Code");
+        editText.setHint("Code");
 
 
-        Button button = (Button)dialog.findViewById(R.id.submitPassword);
+
+        final Button button = (Button)dialog.findViewById(R.id.submitPassword);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("TKT_clue", "onClick submit");
-                //dialog.dismiss();
-                if(editText.getText().toString().equalsIgnoreCase(EIGHT_CODE))
-                {
-                    Log.d("TKT_clue", "pass = EIGHT_CODE");
-                    clueButtons[8].setTag(Game.READY_TAG);
-                    clueButtons[8].setBackgroundResource(R.drawable.androidunlockg1);
-                    Game.updateEightNineClues();
-                    Game.updateSharedPref(ClueAct.clueButtons[8], 9);
-                    dialog.dismiss();
+                if (v.getTag().equals(Game.CHECK_TAG)) {
+                    Log.d("TKT_clue","tag = check");
+                    if (level == level7 && editText.getText().toString().equalsIgnoreCase(EIGHT_CODE)) {
+                        Log.d("TKT_clue", "pass = EIGHT_CODE");
+                        enterYellow7(dialog);
+
+                    } else if (level == level12 && editText.getText().toString().equalsIgnoreCase(FINAL_CODE)) {
+                        Log.d("TKT_clue", "pass = TWELFTH");
+                        finale(dialog, button, textView, editText);
+                    } else {
+                        Log.d("TKT_clue", "pass = EIGHT_CODE");
+                        dialog.dismiss();
+                        Toast.makeText(ClueAct.this, R.string.wrongPassword, Toast.LENGTH_SHORT).show();
+
+
+                    }
 
                 }
                 else
                 {
-                    Log.d("TKT_clue", "pass = EIGHT_CODE");
+                    Log.d("TKT_clue","tag = next");
                     dialog.dismiss();
-                    Toast.makeText(ClueAct.this, R.string.wrongPassword, Toast.LENGTH_SHORT).show();
-
-
                 }
-
             }
 
         });
         dialog.show();
     }
 
-
-
-    public void checkIfCodeCorrect(View v)
+    public void enterYellow7(Dialog dialog)
     {
+        Log.d("TKT_clue", "pass = EIGHT_CODE");
+        clueButtons[8].setTag(Game.READY_TAG);
+        clueButtons[8].setBackgroundResource(R.drawable.androidunlockg1);
+        Game.updateEightNineClues();
+        Game.updateSharedPref(ClueAct.clueButtons[8], 9);
+        dialog.dismiss();
+    }
+    public void finale(Dialog dialog, Button button, TextView textView, EditText editText)
+    {
+        button.setBackgroundResource(R.drawable.tickc);
+        textView.setText(R.string.theEnd);
+        editText.setVisibility(View.GONE);
+        button.setText("");
+        Game.updateLast();
+        button.setTag(Game.NEXT_TAG);
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        int k = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
+        Log.d("TKT_clue","onRestart, clues: "+k);
+        first = Game.gamePrefs.getBoolean(Game.FIRST, true);
+        last = Game.gamePrefs.getBoolean(Game.LAST, true);
+        setScreen(k);
     }
 }

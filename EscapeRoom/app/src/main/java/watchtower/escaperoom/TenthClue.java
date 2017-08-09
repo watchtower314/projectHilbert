@@ -36,6 +36,7 @@ public class TenthClue extends AppCompatActivity {
         patternLockView = (PatternLockView)findViewById(R.id.lockPattern);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS,0);
         int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE,0);
+        Log.d("TKT10","clues: "+clues);
         if(clues > clue)
             disableView();
         else

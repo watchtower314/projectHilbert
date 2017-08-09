@@ -6,6 +6,161 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="watchtower.escaperoom.TwelfthClue"
-    android:layoutDirection="ltr">
+    android:layoutDirection="ltr"
+    android:id="@+id/fanLayout"
+    android:background="@drawable/hilberthotelnoir">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+
+
+        <!-- first line-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/grouppic"
+                android:backgroundTint="@color/blanco"></ImageView>
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:text="@string/and"
+                android:textSize="70dp"
+                android:textColor="@color/yellow"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"></TextView>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/memaw12"
+                android:layout_gravity="center"
+                ></ImageButton>
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:text="@string/and"
+                android:textSize="70dp"
+                android:textColor="@color/yellow"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"></TextView>
+
+        </LinearLayout>
+
+        <!-- second line-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/slefie"
+                android:backgroundTint="@color/blanco"/>
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:text="@string/and"
+                android:textSize="70dp"
+                android:textColor="@color/yellow"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"></TextView>
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/whatsappicon"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equals"
+            android:textSize="100dp"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            ></TextView>
+
+
+        <!-- stars-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:background="@color/blancoTrans">
+
+            <ImageView
+                android:id="@+id/star0"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/asterix"
+                android:onClick="changeEmoji"
+                android:layout_marginRight="5dp"
+                android:tag="@string/asterix"
+
+                />
+            <ImageView
+                android:id="@+id/star1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/asterix"
+                android:onClick="changeEmoji"
+                android:layout_marginRight="5dp"
+                android:tag="@string/asterix"
+                />
+            <ImageView
+                android:id="@+id/star2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/asterix"
+                android:onClick="changeEmoji"
+                android:layout_marginRight="5dp"
+                android:tag="@string/asterix"
+                />
+            <ImageView
+                android:id="@+id/star3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/asterix"
+                android:onClick="changeEmoji"
+                android:layout_marginRight="5dp"
+                android:tag="@string/asterix"
+                />
+            <ImageView
+                android:id="@+id/star4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/asterix"
+                android:onClick="changeEmoji"
+                android:tag="@string/asterix"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>

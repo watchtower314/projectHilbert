@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 public class Game {
 
+
     protected static SharedPreferences gamePrefs;
     public static SharedPreferences.Editor progressEdit;
     //shared prefs----------------------------------------------
@@ -26,10 +27,12 @@ public class Game {
     public static final String EIGHT_PASSED = "eightPassed";
     public static int clueNum;
     public static String CURRENT_CLUE = "currentClue";
+    public static final String FIRST = "first";
+    public static final String LAST = "last";
 
     //tags------------------------------------------------------
-    public static final String CHECK_TAG = "check";//clues: 1, 2, 6
-    public static final String NEXT_TAG = "next";//clues: 1, 2, 6
+    public static final String CHECK_TAG = "check";//clues: 1, 2, 6, clueAct
+    public static final String NEXT_TAG = "next";//clues: 1, 2, 6, clueAct
     //clue 7
     public static final String DELETE_TAG = "delete";
     public static final String CANCEL_TAG = "cancel";
@@ -40,6 +43,7 @@ public class Game {
     public static final String YELLOW_LOCK_TAG = "yellow";
     public static final String READY_TAG = "ready";
 
+
     //clue 5
     public static final String ARROWY_TAG = "arrowy"; //:= arrow yellow
     public static final String BLUE_TICK="bluetick";
@@ -48,6 +52,9 @@ public class Game {
     public static final long dot = 200, dash = 400, letter_gap=100, word_gap=300;
     public static Vibrator vib;// = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
     public static MediaPlayer mediaPlayer;
+
+    //twelfth clue
+
 
 
     //public static final String SCREEN = "screen";
@@ -68,6 +75,22 @@ public class Game {
         Log.d("TKT_game","updateEightNineClue");
         progressEdit = gamePrefs.edit();
         progressEdit.putBoolean(EIGHT_PASSED,true);
+        progressEdit.commit();
+    }
+
+    public static void updateFirst()
+    {
+        Log.d("TKT_game","updateFirst");
+        progressEdit = gamePrefs.edit();
+        progressEdit.putBoolean(FIRST,false);
+        progressEdit.commit();
+    }
+
+    public static void updateLast()
+    {
+        Log.d("TKT_game","updateLast");
+        progressEdit = gamePrefs.edit();
+        progressEdit.putBoolean(LAST,false);
         progressEdit.commit();
     }
 

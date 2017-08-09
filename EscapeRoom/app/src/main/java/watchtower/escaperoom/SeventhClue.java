@@ -17,7 +17,7 @@ public class SeventhClue extends AppCompatActivity {
 
     static Button uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, cero, emergencia, cancel;
     static RelativeLayout screen;
-    public final int clue = 7, code = 3012; //TODO: change this to shira's bday
+    public final int clue = 7, code = 1408; //shira's bday
     int count = 0, ans = 0;
     static boolean flag = false;
     boolean showMessage = true;

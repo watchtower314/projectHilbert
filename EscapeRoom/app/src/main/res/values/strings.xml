@@ -14,7 +14,7 @@
     <string name="ninthClue">רמז #9</string>
     <string name="tenthClue">רמז #10</string>
     <string name="eleventhClue">רמז #11</string>
-    <string name="twelfthClue">רמז#12</string>
+    <string name="twelfthClue">רמז #12</string>
     <string name="submit">sumbit</string>
     <string name="error">ססמא שגוייה, נסו שוב</string>
     <string name="accessDenied">עלייך לפתור את הרמזים הקודמים בשביל לפתוח את הרמז הזה</string>
@@ -36,9 +36,18 @@
 \nאבל רק מאחורי אייקון
     אחד נמצא הרמז הנכון...</string>
     <string name="denied">Access denied</string>
+    <string name="lastClue">הגעתם לשלב האחרון!!!</string>
+    <string name="and">+</string>
+    <string name="equals">=</string>
 
     <string name="url">https://chat.whatsapp.com/CpmlLGBke45CZpuUKlxpTF</string>
     <string name="wrongPassword">הקוד שגוי, נסו שוב אחר כך</string>
-
+    <string name="recWrong">טעות במלבן האדום, נסו שוב</string>
+    <string name="sqWrong">טעות בריבוע הכחול, נסו שוב</string>
+    <string name="cirWrong">טעות בעיגול הצהוב, נסו שוב</string>
+    <string name="asterix">asterix</string>
+    <string name="finished">הכניסו את הקוד שעל המפתח\nשמצאתם כדי לסיים את המשחק</string>
+<string name="enterPassword">הכניסו את הקוד שמצאתם ברמז הקודם</string>
+    <string name="theEnd">סיימתם אם המשחק! מקווה שנהנתם!</string>
 
 </resources>

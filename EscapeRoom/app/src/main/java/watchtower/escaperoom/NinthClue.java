@@ -43,20 +43,11 @@ public class NinthClue extends AppCompatActivity{
         otherScreen = (RelativeLayout)findViewById(R.id.matchPatternLayout);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS, 0);
         int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE, 0);
+        Log.d("TKT9","clues: "+clues);
         if(clues > clue)
             disableEditText();
     }
 
-
-    /*
-    public void escapeThis(View v)
-    {
-        //lock.setVisibility(View.VISIBLE);
-        lock.setEnabled(true);
-        //lock.setBackgroundResource(R.drawable.androidunlockg);
-        knock.setEnabled(true);
-    }
-    */
     public void initButtons(Dialog dialog)
     {
         otherScreen = (RelativeLayout)dialog.findViewById(R.id.matchPatternLayout);
@@ -554,7 +545,7 @@ public class NinthClue extends AppCompatActivity{
         Log.d("TKT9","f-s: "+(firstInterval-secondInterval));
         if( Math.abs(firstInterval-secondInterval)<epsilon)
         {
-            new CountDownTimer(1500,1000){
+            new CountDownTimer(1000,1000){
                 public void onTick(long millisUntilFinish)
                 {
                     Log.d("TKT9", "Time remaining: "+millisUntilFinish/1000);

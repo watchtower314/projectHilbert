@@ -44,6 +44,7 @@ public class EighthClue extends AppCompatActivity {
         screen = (RelativeLayout)findViewById(R.id.homeScreen);
         Game.gamePrefs = getSharedPreferences(Game.GAME_PREFS, 0);
         int clues = Game.gamePrefs.getInt(Game.CURRENT_CLUE, 0);
+        Log.d("TKT8","clues: "+clues);
 
 
         if(clues > clue)
